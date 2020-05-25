@@ -1,0 +1,22 @@
+<template>
+  <header>
+    Sissel Marie Tonn
+
+    <nav>
+      <nuxt-link class="nav-link" to="/projects">projects</nuxt-link>
+      <nuxt-link class="nav-link" to="/about">About</nuxt-link>
+      <nuxt-link class="nav-link" to="/illustration">illustration</nuxt-link>
+      <nuxt-link class="nav-link" to="/co-learning">co-learning</nuxt-link>
+    </nav>
+  </header>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style lang="scss">
+.nav-link {
+  text-transform: uppercase;
+}
+</style>

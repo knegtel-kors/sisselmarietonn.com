@@ -1,0 +1,68 @@
+<template>
+  <article>
+    <Header />
+    <BigProjectList :projects="bigProjects" />
+    <SmallProjectList :projects="smallProjects" />
+  </article>
+</template>
+
+<script>
+import Header from '~/components/Header'
+import BigProjectList from '~/components/BigProjectList'
+import SmallProjectList from '~/components/SmallProjectList'
+
+export default {
+  components: {
+    Header,
+    BigProjectList,
+    SmallProjectList
+  },
+  async asyncData({ $prismic, error }) {
+    try {
+      // Query to get API object
+      // this should be modified to get the correct articles
+      const bigProjects = await $prismic.api.query(
+        [
+          $prismic.predicates.at('document.type', 'article'),
+          $prismic.predicates.at('my.article.type', 'Project')
+        ],
+        { orderings: '[my.article.date desc]', pageSize: 3 }
+      )
+
+      // this should be modified to get the correct articles
+      const smallProjects = await $prismic.api.query(
+        [
+          $prismic.predicates.at('document.type', 'article'),
+          $prismic.predicates.at('my.article.type', 'Project')
+        ],
+        { orderings: '[my.article.date desc]', pageSize: 3 }
+      )
+
+      // Returns data to be used in template
+      return {
+        bigProjects: bigProjects.results,
+        smallProjects: smallProjects.results
+      }
+    } catch (e) {
+      // Returns error page
+      console.log(e)
+      error({ statusCode: 404, message: 'Page not found' })
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+p:first-of-type {
+  margin-top: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+article {
+  padding: 2rem;
+}
+</style>
