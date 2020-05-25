@@ -1,38 +1,39 @@
 <template>
   <article>
-    <h1>article</h1>
+    <Header />
+    <prismic-rich-text :field="article.title" />
+    <FormattedImage :field="article.header" :width="800" :height="600" />
+    <DateFormatter :data="article" />
+    <prismic-rich-text :field="article.credits" />
+    <TabContent :data="article" />
   </article>
 </template>
 
 <script>
-import { dragscroll } from 'vue-dragscroll'
-import moment from 'moment'
 import textBalancer from 'text-balancer'
+import Header from '~/components/Header'
+import SmallProjectList from '~/components/SmallProjectList'
 import FormattedImage from '~/components/FormattedImage'
+import DateFormatter from '~/components/DateFormatter'
+import TabContent from '~/components/TabContent'
 
 export default {
   data() {
-    return {
-      percentage: 0
-    }
+    return { selectedTab: 'description' }
   },
   components: {
-    FormattedImage
-  },
-  directives: {
-    dragscroll
+    Header,
+    SmallProjectList,
+    FormattedImage,
+    DateFormatter,
+    TabContent
   },
   async asyncData({ $prismic, error, params }) {
     try {
-      console.log(params.article)
-      const article = await $prismic.api.query(
-        $prismic.predicates.at('document.type', 'article'),
-        { pageSize: 50 }
-      )
-
+      const article = await $prismic.api.getByUID('article', params.uid)
       // Returns data to be used in template
       return {
-        article: article.results
+        article: article.data
       }
     } catch (e) {
       // Returns error page
@@ -66,7 +67,6 @@ p:first-of-type {
 
 a {
   color: inherit;
-  text-decoration: none;
 }
 
 article {

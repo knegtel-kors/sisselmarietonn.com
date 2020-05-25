@@ -59,7 +59,6 @@ p:first-of-type {
 
 a {
   color: inherit;
-  text-decoration: none;
 }
 
 article {
