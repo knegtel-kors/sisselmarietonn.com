@@ -1,3 +1,6 @@
-# Dev-Ops
-- [dependabot](https://github.com/settings/installations/1051370) and [dependabot settings](https://app.dependabot.com/accounts/StefKors)
-- [![Netlify Status](https://api.netlify.com/api/v1/badges/8d034914-a7d8-4dc5-aa16-09c684d2ff4f/deploy-status)](https://app.netlify.com/sites/elegant-nightingale-ee9924/deploys)
+# Sissel Marie Tonn
+
+|        |                                                                        |
+| ------ | ---------------------------------------------------------------------- |
+| Design | https://www.sketch.com/s/6d20b3bc-0a1e-4067-bea4-bcda36453bc2/a/eVrGn2 |
+| CMS    | https://sisselmarietonn.prismic.io/                                    |
