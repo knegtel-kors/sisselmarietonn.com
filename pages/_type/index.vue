@@ -1,11 +1,12 @@
 <template>
   <article>
     <Header />
-    <prismic-rich-text :field="article.title" />
-    <FormattedImage :field="article.header" :width="800" :height="600" />
-    <DateFormatter :data="article" />
-    <prismic-rich-text :field="article.credits" />
-    <TabContent :data="article" />
+
+    <div class="list">
+      <div class="result" v-for="result in overview.results" :key="result.id">
+        <prismic-rich-text :field="result.data.title" />
+      </div>
+    </div>
   </article>
 </template>
 
@@ -34,11 +35,18 @@ export default {
   },
   async asyncData({ $prismic, error, params }) {
     try {
-      const article = await $prismic.api.getByUID('article', params.uid)
+      // We need to format is starting with a capital
+      const type = params.type.charAt(0).toUpperCase() + params.type.slice(1)
+      const overview = await $prismic.api.query(
+        $prismic.predicates.at('my.article.type', type),
+        { orderings: '[my.article.date desc]', pageSize: 50 }
+      )
+
+      console.log(overview)
       // Returns data to be used in template
       return {
-        article: article.data,
-        title: article.data.title[0].text
+        overview: overview,
+        title: type + "'s"
       }
     } catch (e) {
       // Returns error page
