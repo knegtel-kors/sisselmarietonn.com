@@ -3,7 +3,7 @@
     Sissel Marie Tonn
 
     <nav>
-      <nuxt-link class="nav-link" to="/projects">projects</nuxt-link>
+      <nuxt-link class="nav-link" to="/project">projects</nuxt-link>
       <nuxt-link class="nav-link" to="/about">About</nuxt-link>
       <nuxt-link class="nav-link" to="/illustration">illustration</nuxt-link>
       <nuxt-link class="nav-link" to="/co-learning">co-learning</nuxt-link>
