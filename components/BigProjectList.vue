@@ -9,9 +9,7 @@
       </div>
       <DateFormatter :data="project.data" />
 
-      {{project}}
-
-      <nuxt-link class="project" :to="project.slugs[0]">
+      <nuxt-link class="project" :to="link(project)">
         View ->
       </nuxt-link>
     </div>
@@ -19,9 +17,11 @@
 </template>
 
 <script>
+import LinkResolver from "~/plugins/link-resolver.js"
 import textBalancer from 'text-balancer'
 import FormattedImage from '~/components/FormattedImage'
 import DateFormatter from '~/components/DateFormatter'
+
 
 export default {
   props: {
@@ -36,6 +36,11 @@ export default {
   },
   mounted() {
     textBalancer.balanceText()
+  },
+  methods: {
+    link(project) {
+      return LinkResolver(project)
+    }
   }
 }
 </script>

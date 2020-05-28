@@ -40,4 +40,8 @@ body {
   box-sizing: border-box;
   margin: 0;
 }
+
+img {
+  width: 100%;
+}
 </style>
