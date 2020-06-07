@@ -16,7 +16,5 @@ export default {}
 </script>
 
 <style lang="scss">
-.nav-link {
-  text-transform: uppercase;
-}
+@import "../assets/styles/blocks/BlockHeader.scss";
 </style>
