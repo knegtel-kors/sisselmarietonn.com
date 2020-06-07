@@ -6,6 +6,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  color: $black;
   background: $grey;
   font-family: $sneak-reg;
 }
@@ -18,7 +19,7 @@ a {
 article {
   width: 100%;
   max-width: 1600px;
-  padding: 0;
+  padding: 0 0 6rem;
   margin: 0 auto;
 }
 
