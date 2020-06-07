@@ -4,29 +4,12 @@
   </div>
 </template>
 <style>
-/* @font-face {
-  font-family: 'GT-America';
-  src: url('/GTAmerica/GT-America-Standard-Regular.woff2');
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'GT-America';
-  src: url('/GTAmerica/GT-America-Standard-Bold.woff2');
-  font-weight: bold;
-} */
 
 html {
-  font-size: 22px;
-  line-height: 1.5;
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: lightgrey;
-  color: #151515;
-  font-family: sans-serif;
-  font-weight: bolder;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
