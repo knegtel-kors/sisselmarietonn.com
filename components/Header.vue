@@ -1,6 +1,6 @@
 <template>
   <header>
-    Sissel Marie Tonn
+    <h2>Sissel Marie Tonn</h2>
 
     <nav>
       <nuxt-link class="nav-link" to="/project">projects</nuxt-link>

@@ -9,3 +9,24 @@ $black: #262626;
 ------------------- */
 $sneak-reg: 'Sneak-Regular', sans-serif;
 $sneak-itl: 'Sneak-Regular-Italic', sans-serif;
+/* -------------------
+  Breakpoints
+------------------- */
+$screen-xs: 480px !default;
+$screen-s: 768px !default;
+$screen-m: 992px !default;
+$screen-l: 1200px !default;
+$screen-xl: 1600px !default;
+/* -------------------
+  Mixins
+------------------- */
+@mixin respond-from($bp-value) {
+  @media (min-width: $bp-value) {
+    @content;
+  }
+}
+@mixin respond-until($bp-value) {
+  @media (max-width: $bp-value) {
+    @content;
+  }
+}
