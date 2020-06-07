@@ -60,21 +60,4 @@ export default {
 </script>
 
 <style lang="scss">
-$bg: #151515;
-$pink: #f29a9d;
-$blue: #3d87ca;
-$blue: #15a09b;
-$transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 400ms;
-
-p:first-of-type {
-  margin-top: 0;
-}
-
-a {
-  color: inherit;
-}
-
-article {
-  padding: 2rem;
-}
 </style>

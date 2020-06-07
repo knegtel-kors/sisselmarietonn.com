@@ -53,15 +53,7 @@ export default {
 </script>
 
 <style lang="scss">
-p:first-of-type {
-  margin-top: 0;
-}
-
-a {
-  color: inherit;
-}
-
-article {
-  padding: 2rem;
-}
+@import "../assets/styles/fonts.scss";
+@import "../assets/styles/values.scss";
+@import "../assets/styles/base.scss";
 </style>
