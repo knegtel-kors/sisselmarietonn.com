@@ -40,5 +40,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/styles/blocks/BlockProjectSmall.scss";
+@import "~/assets/styles/blocks/BlockProjectSmall.scss";
 </style>

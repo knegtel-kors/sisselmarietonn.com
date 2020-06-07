@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/styles/fonts.scss";
-@import "../assets/styles/values.scss";
-@import "../assets/styles/base.scss";
+@import "~/assets/styles/fonts.scss";
+@import "~/assets/styles/values.scss";
+@import "~/assets/styles/base.scss";
 </style>
