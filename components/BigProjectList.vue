@@ -10,7 +10,9 @@
       <div class="block-content">
         <div class="project-info">
           <!-- Title -->
-          <prismic-rich-text :field="project.data.title" />
+          <nuxt-link class="view-project" :to="link(project)">
+            <prismic-rich-text :field="project.data.title" />
+          </nuxt-link>
           <div class="project-data">
             <!-- Date -->
             <DateFormatter class="dateline" :data="project.data" />
