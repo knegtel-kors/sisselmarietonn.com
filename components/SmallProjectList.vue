@@ -1,13 +1,21 @@
 <template>
   <div class="project-wrapper small">
-    <div class="block-project" v-for="project in projects" :key="project.id">
+    <nuxt-link
+      class="block-project"
+      v-for="project in projects"
+      :key="project.id"
+      :to="link(project)"
+    >
       <!-- Image -->
-      <FormattedImage class="project-img" :field="project.data.header" :width="400" :height="300" />
+      <FormattedImage
+        class="project-img"
+        :field="project.data.header"
+        :width="400"
+        :height="300"
+      />
       <div class="project-info">
         <!-- Title -->
-        <nuxt-link class="project" :to="project.slugs[0]">
-          <prismic-rich-text :field="project.data.title" />
-        </nuxt-link>
+        <prismic-rich-text :field="project.data.title" />
         <div class="project-data">
           <!-- Date -->
           <DateFormatter class="dateline" :data="project.data" />
@@ -16,23 +24,22 @@
             {{ project.data.type }}
           </span>
           <!-- View Project -->
-          <nuxt-link class="view-project" :to="link(project)">
+          <div class="view-project">
             <span>View</span>
-            <img src="~/assets/img/smt-arrow.png" alt="">
-          </nuxt-link>
+            <img src="~/assets/img/smt-arrow.png" alt="" />
+          </div>
         </div>
       </div>
-    </div>
-    <!-- FAKE LINK - REPLACE WITH ACTUAL LINK -->
-    <a href="#" class="view-category">
-      All Projects
-      <img src="~/assets/img/smt-arrow.png" alt="">
-    </a>
+    </nuxt-link>
+    <nuxt-link to="/project" class="view-category">
+      All Projects {{ plural(type) }}
+      <img src="~/assets/img/smt-arrow.png" alt="" />
+    </nuxt-link>
   </div>
 </template>
 
 <script>
-import LinkResolver from "~/plugins/link-resolver.js"
+import LinkResolver from '~/plugins/link-resolver.js'
 import textBalancer from 'text-balancer'
 import FormattedImage from '~/components/FormattedImage'
 import DateFormatter from '~/components/DateFormatter'
@@ -41,6 +48,10 @@ export default {
   props: {
     projects: {
       type: Array,
+      required: true
+    },
+    type: {
+      type: String,
       required: true
     }
   },
@@ -54,11 +65,18 @@ export default {
   methods: {
     link(project) {
       return LinkResolver(project)
+    },
+    plural(type) {
+      if (type === 'project') return 'projects'
+      if (type === 'illustration') return 'projects'
+      if (type === 'co-learning') return 'projects'
+
+      return type
     }
   }
 }
 </script>
 
 <style lang="scss">
-@import "~/assets/styles/blocks/BlockProjectSmall.scss";
+@import '~/assets/styles/blocks/BlockProjectSmall.scss';
 </style>

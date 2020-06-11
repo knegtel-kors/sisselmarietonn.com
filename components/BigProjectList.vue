@@ -24,7 +24,6 @@
               <img src="~/assets/img/smt-arrow.png" alt />
             </nuxt-link>
           </div>
-          <!-- THIS IS FAKE TEXT - NEEDS ACTUAL DATA -->
           <div v-if="getDescription(project)" class="project-description">
             {{ getDescription(project) }}
           </div>
