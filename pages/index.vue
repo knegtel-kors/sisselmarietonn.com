@@ -2,7 +2,7 @@
   <article>
     <Header />
     <BigProjectList :projects="bigProjects" />
-    <SmallProjectList :projects="smallProjects" />
+    <SmallProjectList :projects="smallProjects" type="project" />
   </article>
 </template>
 
