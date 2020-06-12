@@ -1,4 +1,4 @@
-@import "../values.scss";
+@import '../values.scss';
 
 header {
   display: flex;
@@ -11,30 +11,39 @@ header {
     padding: 0.5rem 0.75rem 1rem;
   }
 
-  h2 {
-    font-size: 3rem;
-    line-height: 1em;
-    letter-spacing: -0.5px;
+  .logo {
     display: flex;
-    align-items: flex-end;
-    transition: font-size 0.2s;
-    @include respond-until($screen-l) {
-      font-size: 2.5rem;
-    }
-    @include respond-until($screen-s) {
-      font-size: 2rem;
-    }
-    @include respond-until($screen-xs) {
-      font-size: 1.75rem;
+    flex-direction: row;
+    justify-content: space-between;
+
+    h2 {
+      font-size: 3rem;
+      line-height: 1em;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: flex-end;
+      transition: font-size 0.2s;
+      flex: 0 0 100px;
+      @include respond-until($screen-l) {
+        font-size: 2.5rem;
+      }
+      @include respond-until($screen-s) {
+        font-size: 2rem;
+      }
+      @include respond-until($screen-xs) {
+        font-size: 1.75rem;
+      }
+
+
     }
 
-    &:after {
-      content: '';
+    .line {
       width: auto;
       height: 1px;
       background: $black;
       display: block;
-      flex: 1;
+      flex: 1 1 auto;
+      align-self: center;
       margin-left: 0.75rem;
       margin-bottom: 0.5rem;
       @include respond-until($screen-l) {
