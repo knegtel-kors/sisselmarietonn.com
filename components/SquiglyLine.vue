@@ -39,8 +39,6 @@ export default {
     const duration = 1000 // ms
 
     setInterval(() => {
-      console.log('animate!')
-
       this.animateLines(line, duration)
     }, 5000)
   },

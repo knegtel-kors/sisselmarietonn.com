@@ -1,0 +1,28 @@
+@import '../values.scss';
+
+.pagination {
+  margin-top: 3rem;
+  padding: 1rem 0;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 3rem;
+
+  .numbers {
+    text-align: center;
+
+    .number {
+      text-align: center;
+      padding: 0 1rem;
+      color: rgba($black, 0.4);
+
+      &.active {
+        color: $black;
+      }
+    }
+  }
+
+  .next {
+    text-align: right;
+  }
+}
