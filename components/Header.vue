@@ -1,6 +1,12 @@
 <template>
   <header>
-    <h2>Sissel Marie Tonn</h2>
+    <div class="logo">
+      <nuxt-link to="/">
+        <h2>Sissel Marie Tonn</h2>
+      </nuxt-link>
+      <div class="line"></div>
+      <SquiglyLine />
+    </div>
 
     <nav>
       <nuxt-link class="nav-link" to="/project">projects</nuxt-link>
@@ -12,9 +18,15 @@
 </template>
 
 <script>
-export default {}
+import SquiglyLine from '~/components/SquiglyLine'
+
+export default {
+  components: {
+    SquiglyLine
+  }
+}
 </script>
 
 <style lang="scss">
-@import "~/assets/styles/blocks/BlockHeader.scss";
+@import '~/assets/styles/blocks/BlockHeader.scss';
 </style>

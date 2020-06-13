@@ -35,7 +35,7 @@ export default {
    ** Plugins to load before mounting the App
    */
   ...routerBase,
-  plugins: [],
+  plugins: ['~/plugins/konva'],
 
   prismic: {
     endpoint: 'https://sisselmarietonn.cdn.prismic.io/api/v2'
