@@ -1,57 +1,15 @@
 <template>
   <article>
     <Header />
-
-    <p v-if="!overview.results.length">
-      no projects found
-    </p>
-
-    <div class="list" v-if="overview.results.length">
-      <p>
-        found {{ overview.total_results_size }} {{ type }}'s in
-        {{ pagination.total_pages }} pages
-      </p>
-
-      <div class="result" v-for="result in overview.results" :key="result.id">
-        <prismic-rich-text :field="result.data.title" />
-        <FormattedImage
-          :field="result.data.header"
-          :width="600"
-          :height="400"
-        />
-        <nuxt-link class="project" :to="link(result)">
-          View ->
-        </nuxt-link>
-      </div>
-    </div>
-
-    <div class="pagination">
-      <nuxt-link
-        v-if="pagination.prev > 0"
-        class="prev"
-        :to="{ path: type, query: { page: pagination.prev } }"
-      >
-        previous
-      </nuxt-link>
-
-      <div class="numbers">
-        <nuxt-link
-          v-for="number in pagination.total_pages"
-          :key="number"
-          class="number"
-          :to="{ path: type, query: { page: number } }"
-        >
-          {{ number }}
-        </nuxt-link>
+    <div class="page-content">
+      <div class="page-info">
+        <p v-if="!overview.results.length">
+          No results found
+        </p>
       </div>
 
-      <nuxt-link
-        v-if="pagination.next <= pagination.total_pages"
-        class="next"
-        :to="{ path: type, query: { page: pagination.next } }"
-      >
-        next
-      </nuxt-link>
+      <OverviewProjectList :projects="overview.results" :type="type" />
+      <Pagination :pagination="pagination" :type="type" />
     </div>
   </article>
 </template>
@@ -60,7 +18,8 @@
 import LinkResolver from '~/plugins/link-resolver.js'
 import textBalancer from 'text-balancer'
 import Header from '~/components/Header'
-import SmallProjectList from '~/components/SmallProjectList'
+import OverviewProjectList from '~/components/OverviewProjectList'
+import Pagination from '~/components/Pagination'
 import FormattedImage from '~/components/FormattedImage'
 import DateFormatter from '~/components/DateFormatter'
 import TabContent from '~/components/TabContent'
@@ -76,22 +35,26 @@ export default {
   },
   components: {
     Header,
-    SmallProjectList,
+    Pagination,
+    OverviewProjectList,
     FormattedImage,
     DateFormatter,
     TabContent
   },
   watchQuery: ['page'],
-  async asyncData({ $prismic, error, params, query }) {
+  async asyncData({ $prismic, error, params, query, route, redirect }) {
     try {
       // We need to format is starting with a capital
-      console.log(query)
       const currentPage = parseInt(query.page) || 1
       const type = params.type.charAt(0).toUpperCase() + params.type.slice(1)
       const overview = await $prismic.api.query(
         $prismic.predicates.at('my.article.type', type),
-        { orderings: '[my.article.date desc]', pageSize: 2, page: currentPage }
+        { orderings: '[my.article.date desc]', pageSize: 10, page: currentPage }
       )
+      
+      if (currentPage > overview.total_pages) {
+        redirect(`${route.path}?page=${overview.total_pages}`);
+      }      
 
       // Returns data to be used in template
       return {
@@ -129,9 +92,4 @@ export default {
 </script>
 
 <style lang="scss">
-.pagination {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
 </style>
