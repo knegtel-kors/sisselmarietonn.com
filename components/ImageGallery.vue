@@ -1,13 +1,17 @@
 <template>
   <div class="gallery">
     <div class="slide">
-      <div class="arrow left" v-on:click="decrement">left</div>
-      <FormattedImage
+      <div class="arrow left" v-on:click="decrement">
+        <img src="~/assets/img/smt-arrow.png" alt />
+      </div>
+      <FormattedImage class="slide-img"
         :field="slides[current].gallery_image"
         :width="800"
         :height="600"
       />
-      <div class="arrow right" v-on:click="increment">right</div>
+      <div class="arrow right" v-on:click="increment">
+        <img src="~/assets/img/smt-arrow.png" alt />
+      </div>
     </div>
     <div class="progressbar">
       <span
@@ -57,42 +61,4 @@ export default {
 </script>
 
 <style lang="scss">
-.slide {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  .arrow {
-    padding: 1rem;
-    border: 1px solid grey;
-    border-radius: 100%;
-    cursor: pointer;
-  }
-}
-
-.progressbar {
-  display: flex;
-  flex-direction: row;
-
-  .bar {
-    height: 10px;
-    background: grey;
-    display: inline-block;
-    flex-grow: 1;
-    cursor: pointer;
-
-    & + .bar {
-      margin-left: 1rem;
-    }
-
-    &:hover {
-      background: darkgray;
-    }
-
-    &.active {
-      background: black;
-    }
-  }
-}
 </style>

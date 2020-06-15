@@ -9,6 +9,10 @@ body {
   color: $black;
   background: $grey;
   font-family: $sneak-reg;
+
+  em {
+    font-family: $sneak-itl;
+  }
 }
 
 a {

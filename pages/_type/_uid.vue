@@ -1,11 +1,15 @@
 <template>
   <article>
     <Header />
-    <prismic-rich-text :field="article.title" />
-    <FormattedImage :field="article.header" :width="800" :height="600" />
-    <DateFormatter :data="article" />
-    <prismic-rich-text :field="article.credits" />
-    <TabContent :data="article" />
+    <div class="article-wrapper">
+      <div class="article-header">
+        <prismic-rich-text :field="article.title" />
+        <DateFormatter :data="article" />
+      </div>
+      <FormattedImage :field="article.header" :width="1200" :height="800" />
+      <prismic-rich-text class="header-caption" :field="article.credits" />
+      <TabContent :data="article" />
+    </div>
   </article>
 </template>
 
@@ -60,4 +64,6 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~/assets/styles/blocks/BlockArticle.scss';
+@import '~/assets/styles/blocks/BlockGallery.scss';
 </style>

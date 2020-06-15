@@ -1,0 +1,38 @@
+@mixin block-borders {
+  width: 100%;
+  max-width: 840px;
+  position: relative;
+
+  &:after,
+  &:before {
+    content: '';
+    width: 1px;
+    height: 100%;
+    background: $black;
+    display: block;
+    position: absolute;
+    top: 0;
+    @include respond-until($screen-m) {
+      content: none;
+    }
+  }
+
+  &:before {
+    left: -6rem;
+    @include respond-until($screen-l) {
+      left: -4rem;
+    }
+  }
+
+  &:after {
+    right: -6rem;
+    @include respond-until($screen-l) {
+      right: -4rem;
+    }
+  }
+}
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

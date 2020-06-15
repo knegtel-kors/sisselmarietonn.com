@@ -1,5 +1,5 @@
 <template>
-  <div class="body">
+  <div class="article-body">
     <div class="tabs">
       <div
         v-on:click="tab = 'description'"
@@ -76,18 +76,4 @@ export default {
 </script>
 
 <style lang="scss">
-.tabs {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  .tab {
-    display: inline-block;
-    cursor: pointer;
-    padding: 0 1rem;
-
-    &.active {
-      border-bottom: 3px solid;
-    }
-  }
-}
 </style>
