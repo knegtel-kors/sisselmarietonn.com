@@ -1,3 +1,4 @@
+import get from 'lodash.get'
 export default function (doc) {
   if (doc.isBroken) {
     return '/not-found'
@@ -6,13 +7,16 @@ export default function (doc) {
   if (doc.type === 'homepage') {
     return '/'
   }
-
-  if (doc.type === 'article' && doc.data.type === 'about') {
+  
+  const type = get(doc, [ 'data', 'type' ])
+  console.log(doc.type);
+  
+  if (doc.type === 'article' && type === 'about') {
     return `/${doc.uid}`
   }
 
   if (doc.type === 'article') {
-    return `/${doc.data.type.toLowerCase()}/${doc.uid}`
+    return `/${type.toLowerCase()}/${doc.uid}`
   }
 
   return '/not-found'

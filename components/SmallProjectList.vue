@@ -31,10 +31,6 @@
         </div>
       </div>
     </nuxt-link>
-    <nuxt-link to="/project" class="view-category">
-      All Projects {{ plural(type) }}
-      <img src="~/assets/img/smt-arrow.svg" alt="" />
-    </nuxt-link>
   </div>
 </template>
 
@@ -65,13 +61,6 @@ export default {
   methods: {
     link(project) {
       return LinkResolver(project)
-    },
-    plural(type) {
-      if (type === 'project') return 'projects'
-      if (type === 'illustration') return 'projects'
-      if (type === 'co-learning') return 'projects'
-
-      return type
     }
   }
 }

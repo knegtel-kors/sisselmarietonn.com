@@ -180,7 +180,6 @@
           position: relative;
           padding: 0 2.5rem;
           overflow-y: hidden;
-          font-style: italic;
           @include respond-until($screen-l) {
             font-size: 0.875rem;
             padding: 0 1.5rem;
