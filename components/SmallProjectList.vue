@@ -26,14 +26,14 @@
           <!-- View Project -->
           <div class="view-project">
             <span>View</span>
-            <img src="~/assets/img/smt-arrow.png" alt="" />
+            <img src="~/assets/img/smt-arrow.svg" alt="" />
           </div>
         </div>
       </div>
     </nuxt-link>
     <nuxt-link to="/project" class="view-category">
       All Projects {{ plural(type) }}
-      <img src="~/assets/img/smt-arrow.png" alt="" />
+      <img src="~/assets/img/smt-arrow.svg" alt="" />
     </nuxt-link>
   </div>
 </template>

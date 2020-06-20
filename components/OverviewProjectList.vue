@@ -26,7 +26,7 @@
           <!-- View Project -->
           <div class="view-project">
             <span>View</span>
-            <img src="~/assets/img/smt-arrow.png" alt="" />
+            <img src="~/assets/img/smt-arrow.svg" alt="" />
           </div>
         </div>
       </div>

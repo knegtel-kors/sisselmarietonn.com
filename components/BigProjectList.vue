@@ -21,7 +21,7 @@
             <!-- View Project -->
             <nuxt-link class="view-project" :to="link(project)">
               <span>View</span>
-              <img src="~/assets/img/smt-arrow.png" alt />
+              <img src="~/assets/img/smt-arrow.svg" alt />
             </nuxt-link>
           </div>
           <div v-if="getDescription(project)" class="project-description">
