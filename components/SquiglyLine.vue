@@ -24,7 +24,8 @@ export default {
         strokeWidth: 1,
         fillLinearGradientStartPoint: { x: -50, y: -50 },
         fillLinearGradientEndPoint: { x: 50, y: 50 }
-      }
+      },
+      updateAnimation: null
     }
   },
   mounted() {
@@ -37,10 +38,13 @@ export default {
 
     line.setPoints(points)
     const duration = 1000 // ms
-
-    setInterval(() => {
+    
+    this.updateAnimation = setInterval(() => {
       this.animateLines(line, duration)
     }, 5000)
+  },
+  beforeDestroy() {
+    clearInterval( this.updateAnimation )
   },
   methods: {
     animateLines(line, duration) {
@@ -48,7 +52,7 @@ export default {
       const h = this.configKonva.height
 
       var tween = new Konva.Tween({
-        node: line,
+        node: this.$refs.line.getNode(),
         duration: duration / 1000,
         points: this.getPoints(w, h, 20)
       })

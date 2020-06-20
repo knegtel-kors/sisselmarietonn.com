@@ -90,7 +90,10 @@ export default {
           loader: 'file-loader'
         }
       ),
-        (config.resolve.alias['vue'] = 'vue/dist/vue.common')
+      (config.resolve.alias['vue'] = 'vue/dist/vue.common'),
+      config.externals = [ {
+        whitelist: ['vue-konva', 'konva', 'vue']
+      }]
     }
   }
 }
