@@ -43,9 +43,11 @@ export default {
   watchQuery: ['page'],
   async asyncData({ $prismic, error, params, query, route, redirect }) {
     try {
-      // We need to format is starting with a capital
       const currentPage = parseInt(query.page) || 1
-      const type = toType(params.type)
+      // We need to format with a capital
+      const type = params.type.split('-').map(Morpheme => {
+        return Morpheme.charAt(0).toUpperCase() + Morpheme.slice(1)
+      }).join('-')
       
       const overview = await $prismic.api.query(
         $prismic.predicates.at('my.article.type', type),
@@ -79,7 +81,6 @@ export default {
       return LinkResolver(project)
     },
     toType(string) {
-      console.log('type');
       return string.charAt(0).toUpperCase() + string.slice(1)
     }
   },
