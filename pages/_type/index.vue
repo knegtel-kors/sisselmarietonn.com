@@ -1,6 +1,5 @@
 <template>
   <article>
-    <Header />
     <div class="page-content">
       <div class="page-info">
         <p v-if="!overview.results.length">
@@ -15,47 +14,41 @@
 
 <script>
 import LinkResolver from '~/plugins/link-resolver.js'
-import textBalancer from 'text-balancer'
-import Header from '~/components/Header'
 import OverviewProjectList from '~/components/OverviewProjectList'
 import Pagination from '~/components/Pagination'
-import FormattedImage from '~/components/FormattedImage'
-import DateFormatter from '~/components/DateFormatter'
-import TabContent from '~/components/TabContent'
 
 export default {
   head() {
     return {
-      title: `${this.title} by Sissel Marie Tonn`
+      title: `${this.title} by Sissel Marie Tonn`,
     }
   },
   data() {
     return { selectedTab: 'description' }
   },
   components: {
-    Header,
     Pagination,
     OverviewProjectList,
-    FormattedImage,
-    DateFormatter,
-    TabContent
   },
   watchQuery: ['page'],
   async asyncData({ $prismic, error, params, query, route, redirect }) {
     try {
       const currentPage = parseInt(query.page) || 1
       // We need to format with a capital
-      const type = params.type.split('-').map(Morpheme => {
-        return Morpheme.charAt(0).toUpperCase() + Morpheme.slice(1)
-      }).join('-')
-      
+      const type = params.type
+        .split('-')
+        .map((Morpheme) => {
+          return Morpheme.charAt(0).toUpperCase() + Morpheme.slice(1)
+        })
+        .join('-')
+
       const overview = await $prismic.api.query(
         $prismic.predicates.at('my.article.type', type),
         { orderings: '[my.article.date desc]', pageSize: 12, page: currentPage }
       )
 
       if (currentPage > overview.total_pages) {
-        redirect(`${route.path}?page=${overview.total_pages}`);
+        redirect(`${route.path}?page=${overview.total_pages}`)
       }
 
       // Returns data to be used in template
@@ -67,8 +60,8 @@ export default {
           next: overview.page + 1,
           current: overview.page,
           prev: overview.page - 1,
-          total_pages: overview.total_pages
-        }
+          total_pages: overview.total_pages,
+        },
       }
     } catch (e) {
       // Returns error page
@@ -82,19 +75,9 @@ export default {
     },
     toType(string) {
       return string.charAt(0).toUpperCase() + string.slice(1)
-    }
+    },
   },
-  mounted() {
-    textBalancer.balanceText()
-  },
-  filters: {
-    onlyYear(val) {
-      let date = new Date(val)
-      return date.getFullYear()
-    }
-  }
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

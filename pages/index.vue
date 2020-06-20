@@ -1,21 +1,23 @@
 <template>
   <article>
-    <Header />
     <BigProjectList :projects="bigProjects" />
     <SmallProjectList :projects="smallProjects" type="project" />
   </article>
 </template>
 
 <script>
-import Header from '~/components/Header'
 import BigProjectList from '~/components/BigProjectList'
 import SmallProjectList from '~/components/SmallProjectList'
 
 export default {
   components: {
-    Header,
     BigProjectList,
     SmallProjectList
+  },
+  head() {
+    return {
+      title: `Sissel Marie Tonn`
+    }
   },
   async asyncData({ $prismic, error }) {
     try {

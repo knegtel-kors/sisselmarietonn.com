@@ -1,6 +1,5 @@
 <template>
   <article>
-    <Header />
     <prismic-rich-text :field="article.title" />
     <FormattedImage :field="article.header" :width="800" :height="600" />
     <DateFormatter :data="article" />
@@ -10,12 +9,10 @@
 </template>
 
 <script>
-import textBalancer from 'text-balancer'
-import Header from '~/components/Header'
-import SmallProjectList from '~/components/SmallProjectList'
 import FormattedImage from '~/components/FormattedImage'
 import DateFormatter from '~/components/DateFormatter'
 import TabContent from '~/components/TabContent'
+
 export default {
   head() {
     return {
@@ -26,8 +23,6 @@ export default {
     return { selectedTab: 'description' }
   },
   components: {
-    Header,
-    SmallProjectList,
     FormattedImage,
     DateFormatter,
     TabContent
@@ -47,9 +42,6 @@ export default {
     }
   },
   methods: {},
-  mounted() {
-    textBalancer.balanceText()
-  },
   filters: {
     onlyYear(val) {
       let date = new Date(val)
