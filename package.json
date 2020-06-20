@@ -16,6 +16,7 @@
     "@nuxtjs/pwa": "^3.0.0-0",
     "eslint": "^7.3.0",
     "konva": "^6.0.0",
+    "lodash.debounce": "^4.0.8",
     "lodash.find": "^4.6.0",
     "lodash.get": "^4.4.2",
     "nuxt": "^2.13.0",

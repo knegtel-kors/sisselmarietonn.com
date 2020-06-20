@@ -1,11 +1,10 @@
 <template>
   <header>
-    <div class="logo">
-      <nuxt-link to="/">
+    <div class="headerWrapper">
+      <nuxt-link to="/" ref="logo">
         <h2>Sissel Marie Tonn</h2>
       </nuxt-link>
-      <div class="line"></div>
-      <SquiglyLine />
+      <SquiglyLine class="line" />
     </div>
 
     <nav>
