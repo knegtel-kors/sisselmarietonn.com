@@ -45,7 +45,8 @@ export default {
     try {
       // We need to format is starting with a capital
       const currentPage = parseInt(query.page) || 1
-      const type = params.type.charAt(0).toUpperCase() + params.type.slice(1)
+      const type = toType(params.type)
+      
       const overview = await $prismic.api.query(
         $prismic.predicates.at('my.article.type', type),
         { orderings: '[my.article.date desc]', pageSize: 12, page: currentPage }
@@ -76,6 +77,10 @@ export default {
   methods: {
     link(project) {
       return LinkResolver(project)
+    },
+    toType(string) {
+      console.log('type');
+      return string.charAt(0).toUpperCase() + string.slice(1)
     }
   },
   mounted() {
