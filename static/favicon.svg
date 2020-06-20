@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="164px" height="164px" viewBox="0 0 164 164" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
-    <title>Oval</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <circle id="Oval" fill="#F29A9D" cx="82" cy="82" r="82"></circle>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>SMT__Favicon_Small</title>
+    <g id="SMT__Favicon_Small" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#EDEDED" x="0" y="0" width="100" height="100"></rect>
+        <path d="M50.5681818,83.3333333 C63.4469697,83.3333333 71.2121212,77.0694444 71.2121212,66.4398148 C71.2121212,54.8611111 61.4583333,50.5902778 50.6628788,47.837963 C36.8371212,44.1365741 32.8598485,40.8148148 32.8598485,33.7916667 C32.8598485,25.9143519 40.2462121,22.0231481 48.2954545,22.0231481 C61.0795455,22.0231481 66.0037879,28.6666667 67.1401515,38.2523148 L75,38.2523148 C73.4848485,22.212963 63.8257576,15 48.2954545,15 C35.9848485,15 25,21.8333333 25,33.7916667 C25,44.3263889 31.7234848,49.9259259 44.6022727,53.2476852 C58.4280303,56.9490741 63.1628788,59.6064815 63.1628788,66.724537 C63.1628788,72.7037037 59.5643939,76.4050926 50.9469697,76.4050926 C41.5719697,76.4050926 35.7007576,72.1342593 34.6590909,62.9282407 L26.7992424,62.9282407 C27.8409091,75.2662037 36.0795455,83.3333333 50.5681818,83.3333333 Z" id="S" fill="#262626" fill-rule="nonzero"></path>
     </g>
 </svg>
