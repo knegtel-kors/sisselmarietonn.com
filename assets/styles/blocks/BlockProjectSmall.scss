@@ -12,7 +12,7 @@
   }
   @include respond-until($screen-s) {
     padding: 0 0.75rem;
-    maring-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -60,7 +60,7 @@
         padding-bottom: 3.5rem;
       }
       @include respond-until($screen-xs) {
-        padding-bottom: 2.5rem;
+        padding-bottom: 3rem;
 
         &:last-of-type {
           padding-bottom: 0;
@@ -89,7 +89,6 @@
         padding: 0.5rem 0 0.75rem;
         @include respond-until($screen-s) {
           font-size: 1.5rem;
-          padding-bottom: 1rem;
 
           &:after {
             content: '';
@@ -102,6 +101,7 @@
         }
         @include respond-until($screen-xs) {
           font-size: 1.25rem;
+          padding-bottom: 0.625rem;
         }
       }
 
@@ -181,64 +181,57 @@
 
   &.small {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 3rem;
-    padding: 0 4rem;
+    padding: 0 6rem 6rem;
     @include respond-until($screen-l) {
       grid-gap: 2rem;
-      grid-template-columns: 1fr 1fr 1fr ;
-      padding: 0 2.5rem;
+      padding: 0 2.5rem 4rem;
     }
     @include respond-until($screen-m) {
-      grid-gap: 1.5rem;
-      grid-template-columns: 1fr 1fr ;
-      padding: 0 2rem;
-    }
-    @include respond-until($screen-s) {
       display: flex;
       flex-direction: column;
-      padding: 0 0.75rem;
+      padding: 0 0 4rem;
+      margin: 0 auto;
+      width: 80%;
+    }
+    @include respond-until($screen-s) {
+      width: 100%;
+      padding: 0;
     }
 
     .block-project {
       display: block;
       padding-bottom: 1.5rem;
       border-bottom: 1px solid;
-      margin-bottom: 6rem;
 
       &:hover {
         .project-img {
           opacity: 0.5;
         }
       }
-      @include respond-until($screen-l) {
+      @include respond-until($screen-m) {
         margin-bottom: 4rem;
       }
-
-      @include respond-until($screen-m) {
-        padding-bottom: 1.25rem;
-
-        &:nth-of-type(3) {
-          display: none;
-        }
-      }
-
-      @include respond-until($screen-s) {
-        maring-bottom: 2.5rem;
-        border-bottom: none;
-
-        &:nth-of-type(3) {
-          display: block;
-        }
-      }
       @include respond-until($screen-xs) {
-        padding-bottom: 2.5rem;
+        padding-bottom: 3rem;
+        margin-bottom: 0;
+        border-bottom: none;
       }
 
       .project-img {
-        min-height: 0;
+        object-fit: cover;
+        object-position: center;
         cursor: pointer;
         transition: opacity 0.15s;
+        @include respond-from($screen-m) {
+          min-height: 10rem;
+          max-height: 10rem;
+        }
+        @include respond-from($screen-l) {
+          min-height: 15rem;
+          max-height: 15rem;
+        }
       }
 
       h1 {
@@ -247,12 +240,15 @@
         font-size: 1.25rem;
         line-height: 1.15em;
         padding: 0.5rem 0;
+        @include respond-until($screen-m) {
+          font-size: 1.75rem;
+          padding: 0.75rem 0 0.625rem;
+        }
         @include respond-until($screen-s) {
           font-size: 1.5rem;
         }
         @include respond-until($screen-xs) {
           font-size: 1.25rem;
-          padding-bottom: 1rem;
 
           &:after {
             content: '';

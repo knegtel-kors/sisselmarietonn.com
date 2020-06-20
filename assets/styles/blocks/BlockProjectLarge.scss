@@ -36,7 +36,7 @@
       display: block;
     }
     @include respond-until($screen-xs) {
-      padding-bottom: 2.5rem;
+      padding-bottom: 3rem;
     }
 
     .project-img {
@@ -95,6 +95,7 @@
           }
           @include respond-until($screen-xs) {
             font-size: 1.25rem;
+            padding-bottom: 0.625rem;
           }
 
           &:after {
