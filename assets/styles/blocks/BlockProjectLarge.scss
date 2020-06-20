@@ -6,19 +6,21 @@
   }
 
   &.large {
-    .block-project {
-      &:nth-of-type(even) {
-        grid-template-columns: minmax(min-content, 40rem) 1fr;
-        @include respond-until($screen-l) {
-          grid-template-columns: minmax(min-content, 30rem) 1fr;
-        }
+    div {
+      &:nth-of-type(4n-1) {
+        .block-project {
+          grid-template-columns: minmax(min-content, 40rem) 1fr;
+          @include respond-until($screen-l) {
+            grid-template-columns: minmax(min-content, 30rem) 1fr;
+          }
 
-        .block-content {
-          order: 1;
-        }
+          .block-content {
+            order: 1;
+          }
 
-        .project-img {
-          order: 2;
+          .view-project {
+            order: 2;
+          }
         }
       }
     }
@@ -92,6 +94,7 @@
           font-size: 2rem;
           line-height: 1.125em;
           padding-bottom: 1rem;
+          transition: color 0.15s;
           @include respond-until($screen-l) {
             font-size: 1.75rem;
           }
@@ -111,6 +114,15 @@
             display: block;
             margin: 0 0 0.375rem 0.5rem;
             flex: 1;
+            transition: background 0.15s;
+          }
+
+          &:hover {
+            color: rgba($black, 0.4);
+
+            &:after {
+              background: rgba($black, 0.4);
+            }
           }
         }
 
