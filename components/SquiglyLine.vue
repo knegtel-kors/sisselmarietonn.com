@@ -1,5 +1,5 @@
 <template>
-  <v-stage style="padding-left: 1rem" ref="stage" :config="configKonva">
+  <v-stage style="padding-left: 1rem;" ref="stage" :config="configKonva">
     <v-layer>
       <v-line ref="line" :config="configLine" />
     </v-layer>
@@ -12,7 +12,7 @@ export default {
     return {
       configKonva: {
         width: 600,
-        height: 48 * 2 - 4
+        height: 48 * 2 - 4,
       },
       configLine: {
         w: 400,
@@ -23,9 +23,9 @@ export default {
         stroke: '#262626',
         strokeWidth: 1,
         fillLinearGradientStartPoint: { x: -50, y: -50 },
-        fillLinearGradientEndPoint: { x: 50, y: 50 }
+        fillLinearGradientEndPoint: { x: 50, y: 50 },
       },
-      updateAnimation: null
+      updateAnimation: null,
     }
   },
   mounted() {
@@ -37,14 +37,15 @@ export default {
     const points = this.getPoints(w, h, 20)
 
     line.setPoints(points)
-    const duration = 1000 // ms
-    
+    const duration = 10000 // ms
+
+    this.animateLines(line, duration)
     this.updateAnimation = setInterval(() => {
       this.animateLines(line, duration)
-    }, 5000)
+    }, duration)
   },
   beforeDestroy() {
-    clearInterval( this.updateAnimation )
+    clearInterval(this.updateAnimation)
   },
   methods: {
     animateLines(line, duration) {
@@ -53,17 +54,15 @@ export default {
 
       var tween = new Konva.Tween({
         node: this.$refs.line.getNode(),
+        easing: Konva.Easings.EaseInOut,
         duration: duration / 1000,
-        points: this.getPoints(w, h, 20)
+        points: this.getPoints(w, h, 20),
       })
 
-      // start tween after 2 seconds
-      setTimeout(function() {
-        tween.play()
-        setTimeout(function() {
-          tween.finish()
-        }, duration)
-      }, 2000)
+      tween.play()
+      setTimeout(function () {
+        tween.finish()
+      }, duration)
     },
     getPoints(width, height, numberOfPoints, padding = 4) {
       const array = []
@@ -106,8 +105,8 @@ export default {
       min = Math.ceil(min)
       max = Math.floor(max)
       return Math.floor(Math.random() * (max - min + 1)) + min
-    }
-  }
+    },
+  },
 }
 </script>
 
