@@ -20,9 +20,9 @@
           <!-- Date -->
           <DateFormatter class="dateline" :data="project.data" />
           <!-- Project Type -->
-          <span class="type">
+          <!-- <span class="type">
             {{ project.data.type }}
-          </span>
+          </span> -->
           <!-- View Project -->
           <div class="view-project">
             <span>View</span>

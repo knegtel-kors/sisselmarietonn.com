@@ -7,7 +7,6 @@
           No results found
         </p>
       </div>
-
       <OverviewProjectList :projects="overview.results" :type="type" />
       <Pagination :pagination="pagination" :type="type" />
     </div>
@@ -49,17 +48,17 @@ export default {
       const type = params.type.charAt(0).toUpperCase() + params.type.slice(1)
       const overview = await $prismic.api.query(
         $prismic.predicates.at('my.article.type', type),
-        { orderings: '[my.article.date desc]', pageSize: 10, page: currentPage }
+        { orderings: '[my.article.date desc]', pageSize: 12, page: currentPage }
       )
-      
+
       if (currentPage > overview.total_pages) {
         redirect(`${route.path}?page=${overview.total_pages}`);
-      }      
+      }
 
       // Returns data to be used in template
       return {
         overview: overview,
-        title: type + "'s",
+        title: type + "s",
         type: params.type,
         pagination: {
           next: overview.page + 1,

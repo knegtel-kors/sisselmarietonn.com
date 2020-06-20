@@ -20,25 +20,27 @@
 
   &.overview {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 3rem;
+    padding-top: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
     @include respond-until($screen-l) {
-      grid-gap: 2rem;
-    }
-    @include respond-until($screen-m) {
-      grid-gap: 1.5rem;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 4rem 3rem;
     }
     @include respond-until($screen-s) {
       display: flex;
       flex-direction: column;
+      max-width: 35rem;
+      padding: 0;
     }
 
     .block-project {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       padding-bottom: 1.5rem;
       border-bottom: 1px solid;
-      grid-gap: 1.5rem;
 
       &:hover {
         .project-img {
@@ -52,28 +54,38 @@
         border-bottom: none;
         display: flex;
         flex-direction: column;
+        padding-bottom: 3.5rem;
       }
       @include respond-until($screen-xs) {
         padding-bottom: 2.5rem;
+
+        &:last-of-type {
+          padding-bottom: 0;
+        }
       }
 
       .project-img {
+        order: 0;
         min-height: 0;
+        max-height: 300px;
         cursor: pointer;
         transition: opacity 0.15s;
+        object-fit: cover;
+        object-position: center;
+        background: red;
+        @include respond-until($screen-s) {
+          max-height: none;
+        }
       }
 
       h1 {
         display: flex;
         align-items: flex-end;
-        font-size: 1.25rem;
+        font-size: 1.5rem;
         line-height: 1.15em;
-        padding: 0.5rem 0;
+        padding: 0.5rem 0 0.75rem;
         @include respond-until($screen-s) {
           font-size: 1.5rem;
-        }
-        @include respond-until($screen-xs) {
-          font-size: 1.25rem;
           padding-bottom: 1rem;
 
           &:after {
@@ -84,6 +96,9 @@
             margin: 0 0 0.375rem 0.5rem;
             flex: 1;
           }
+        }
+        @include respond-until($screen-xs) {
+          font-size: 1.25rem;
         }
       }
 
@@ -122,7 +137,7 @@
           justify-content: flex-end;
           align-items: center;
           flex: 1;
-          @include respond-until($screen-xs) {
+          @include respond-until($screen-s) {
             display: flex;
           }
 

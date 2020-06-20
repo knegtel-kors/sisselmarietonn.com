@@ -3,18 +3,28 @@
 .pagination {
   margin-top: 3rem;
   padding: 1rem 0;
-
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: minmax(5rem, max-content) fit-content(300px) minmax(5rem, max-content);
   grid-gap: 3rem;
+  @include respond-until($screen-s) {
+    border-top: 1px solid rgba($black,0.1);
+  }
 
   .numbers {
     text-align: center;
 
     .number {
+      line-height: 1em;
       text-align: center;
-      padding: 0 1rem;
+      padding: 0 0.75rem;
       color: rgba($black, 0.4);
+      transition: color 0.15s;
+
+      &:hover {
+        color: $black;
+      }
 
       &.active {
         color: $black;
@@ -22,7 +32,20 @@
     }
   }
 
-  .next {
+  .next,
+  .prev {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    color: rgba($black, 0.4);
+    transition: color 0.15s;
+
+    &:hover {
+      color: $black;
+    }
+  }
+
+  .prev {
     text-align: right;
   }
 }
