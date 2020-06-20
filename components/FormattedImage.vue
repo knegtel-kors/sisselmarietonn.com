@@ -1,5 +1,6 @@
 <template>
   <img
+    loading="lazy"
     v-if="Object.keys(field).length !== 0"
     :src="field.url | params(this.width, this.height)"
     :alt="field.alt"
