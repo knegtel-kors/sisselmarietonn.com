@@ -1,5 +1,5 @@
 <template>
-  <v-stage style="padding-left: 1rem" ref="stage" :config="configKonva">
+  <v-stage ref="stage" :config="configKonva">
     <v-layer>
       <v-line ref="line" :config="configLine" />
     </v-layer>
@@ -7,12 +7,13 @@
 </template>
 
 <script>
+import debounce from 'lodash.debounce'
 export default {
   data() {
     return {
       configKonva: {
-        width: 600,
-        height: 48 * 2 - 4
+        width: this.getWidth(),
+        height: this.getHeight(),
       },
       configLine: {
         w: 400,
@@ -23,43 +24,99 @@ export default {
         stroke: '#262626',
         strokeWidth: 1,
         fillLinearGradientStartPoint: { x: -50, y: -50 },
-        fillLinearGradientEndPoint: { x: 50, y: 50 }
-      }
+        fillLinearGradientEndPoint: { x: 50, y: 50 },
+      },
+      updateAnimation: null,
     }
   },
   mounted() {
-    const vm = this
-    const line = this.$refs.line.getNode()
-
-    const w = this.configKonva.width
-    const h = this.configKonva.height
-    const points = this.getPoints(w, h, 20)
-
-    line.setPoints(points)
-    const duration = 1000 // ms
-
-    setInterval(() => {
-      this.animateLines(line, duration)
-    }, 5000)
+    this.createAnimation()
+    window.addEventListener('resize', debounce(this.updateWidth, 150))
+  },
+  beforeDestroy() {
+    this.destroyAnimation()
   },
   methods: {
+    updateWidth() {
+      this.destroyAnimation()
+      this.createAnimation()
+    },
+    createAnimation() {
+      const vm = this
+      const line = this.$refs.line.getNode()
+      const stage = this.$refs.stage.getNode()
+
+      const w = this.getWidth()
+      const h = this.getHeight()
+      const numberOfPoints = Math.round(w / 40)
+      const points = this.getPoints(w, h, numberOfPoints)
+
+      line.setPoints(points)
+      const duration = 10000 // ms
+
+      this.animateLines(line, duration)
+      this.updateAnimation = setInterval(() => {
+        this.animateLines(line, duration)
+      }, duration)
+    },
+    destroyAnimation() {
+      clearInterval(this.updateAnimation)
+      window.removeEventListener('resize', this.updateWidth)
+    },
     animateLines(line, duration) {
-      const w = this.configKonva.width
-      const h = this.configKonva.height
+      const stage = this.$refs.stage.getNode()
+
+      stage.width(this.getWidth())
+      stage.height(this.getHeight())
+      stage.draw()
+
+      const w = stage.width()
+      const h = stage.height()
+      const numberOfPoints = Math.round(w / 40)
 
       var tween = new Konva.Tween({
-        node: line,
+        node: this.$refs.line.getNode(),
+        easing: Konva.Easings.EaseInOut,
         duration: duration / 1000,
-        points: this.getPoints(w, h, 20)
+        points: this.getPoints(w, h, numberOfPoints),
       })
 
-      // start tween after 2 seconds
-      setTimeout(function() {
-        tween.play()
-        setTimeout(function() {
-          tween.finish()
-        }, duration)
-      }, 2000)
+      tween.play()
+      setTimeout(function () {
+        tween.finish()
+      }, duration)
+    },
+    getWidth() {
+      let width = window.innerWidth
+
+      return width
+    },
+    getHeight() {
+      const width = window.innerWidth
+      const fontSize = 16
+
+      let rem = 3
+      let baseliseAdjust = fontSize
+
+      if (width <= 1200) {
+        rem = 2.5
+        baseliseAdjust = 0
+      }
+
+      if (width <= 768) {
+        rem = 2
+      }
+
+      if (width <= 480) {
+        rem = 1.75
+      }
+
+      if (width <= 1200) {
+        rem = 2
+      }
+
+      const fontSizeRem = fontSize * rem
+      return fontSizeRem * 2 - baseliseAdjust
     },
     getPoints(width, height, numberOfPoints, padding = 4) {
       const array = []
@@ -77,12 +134,8 @@ export default {
         // setup the diviation so the line
         // progressively gets more squigly
         let customIndex = index
-        if (index <= numberOfPoints / 8) {
+        if (index <= numberOfPoints / 2) {
           customIndex = 0
-        }
-
-        if (index <= numberOfPoints / 4) {
-          customIndex = index / 2
         }
 
         const diviation = spread * customIndex
@@ -102,8 +155,8 @@ export default {
       min = Math.ceil(min)
       max = Math.floor(max)
       return Math.floor(Math.random() * (max - min + 1)) + min
-    }
-  }
+    },
+  },
 }
 </script>
 

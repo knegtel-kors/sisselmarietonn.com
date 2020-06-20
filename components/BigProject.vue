@@ -1,32 +1,32 @@
 <template>
-  <div class="project-wrapper large">
-    <div class="block-project" v-for="project in projects" :key="project.id">
+  <div class="block-project">
+    <nuxt-link class="view-project" :to="link(project)">
       <FormattedImage
         class="project-img"
         :field="project.data.header"
         :width="800"
         :height="600"
       />
-      <div class="block-content">
-        <div class="project-info">
-          <!-- Title -->
+    </nuxt-link>
+    <div class="block-content">
+      <div class="project-info">
+        <!-- Title -->
+        <nuxt-link class="view-project" :to="link(project)">
+          <prismic-rich-text :field="project.data.title" />
+        </nuxt-link>
+        <div class="project-data">
+          <!-- Date -->
+          <DateFormatter class="dateline" :data="project.data" />
+          <!-- Project Type -->
+          <span class="type">{{ project.data.type }}</span>
+          <!-- View Project -->
           <nuxt-link class="view-project" :to="link(project)">
-            <prismic-rich-text :field="project.data.title" />
+            <span>View</span>
+            <img src="~/assets/img/smt-arrow.svg" alt />
           </nuxt-link>
-          <div class="project-data">
-            <!-- Date -->
-            <DateFormatter class="dateline" :data="project.data" />
-            <!-- Project Type -->
-            <span class="type">{{ project.data.type }}</span>
-            <!-- View Project -->
-            <nuxt-link class="view-project" :to="link(project)">
-              <span>View</span>
-              <img src="~/assets/img/smt-arrow.svg" alt />
-            </nuxt-link>
-          </div>
-          <div v-if="getDescription(project)" class="project-description">
-            {{ getDescription(project) }}
-          </div>
+        </div>
+        <div v-if="getDescription(project)" class="project-description">
+          {{ getDescription(project) }}
         </div>
       </div>
     </div>
@@ -35,7 +35,6 @@
 
 <script>
 import LinkResolver from '~/plugins/link-resolver.js'
-import textBalancer from 'text-balancer'
 import get from 'lodash.get'
 import find from 'lodash.find'
 import stripHtml from 'string-strip-html'
@@ -43,31 +42,15 @@ import FormattedImage from '~/components/FormattedImage'
 import DateFormatter from '~/components/DateFormatter'
 
 export default {
-  data() {
-    return {
-      obj: {
-        key: 'value'
-      }
-    }
-  },
   props: {
-    projects: {
-      type: Array,
-      required: true
-    }
+    project: {},
   },
   components: {
     DateFormatter,
-    FormattedImage
+    FormattedImage,
   },
   mounted() {
-    textBalancer.balanceText()
-
-    const obj = {
-      key: 'value'
-    }
-
-    const data = get(obj, 'key')
+    console.log('test')
   },
   methods: {
     link(project) {
@@ -92,9 +75,9 @@ export default {
       return false
     },
     getText(slices) {
-      return find(slices, slice => slice.slice_type === 'text')
-    }
-  }
+      return find(slices, (slice) => slice.slice_type === 'text')
+    },
+  },
 }
 </script>
 

@@ -2,14 +2,17 @@
 
 .page-content {
   padding: 0 4rem;
+  margin-bottom: 6rem;
   @include respond-until($screen-l) {
     padding: 0 2.5rem;
+    margin-bottom: 4rem;
   }
   @include respond-until($screen-m) {
     padding: 0 2rem;
   }
   @include respond-until($screen-s) {
     padding: 0 0.75rem;
+    maring-bottom: 2.5rem;
   }
 }
 
@@ -178,17 +181,17 @@
 
   &.small {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr minmax(10%, 15rem);
+    grid-template-columns: 1fr 1fr 1fr ;
     grid-gap: 3rem;
     padding: 0 4rem;
     @include respond-until($screen-l) {
       grid-gap: 2rem;
-      grid-template-columns: 1fr 1fr 1fr minmax(min-content, 12rem);
+      grid-template-columns: 1fr 1fr 1fr ;
       padding: 0 2.5rem;
     }
     @include respond-until($screen-m) {
       grid-gap: 1.5rem;
-      grid-template-columns: 1fr 1fr minmax(min-content, 10rem);
+      grid-template-columns: 1fr 1fr ;
       padding: 0 2rem;
     }
     @include respond-until($screen-s) {
@@ -201,12 +204,17 @@
       display: block;
       padding-bottom: 1.5rem;
       border-bottom: 1px solid;
+      margin-bottom: 6rem;
 
       &:hover {
         .project-img {
           opacity: 0.5;
         }
       }
+      @include respond-until($screen-l) {
+        margin-bottom: 4rem;
+      }
+
       @include respond-until($screen-m) {
         padding-bottom: 1.25rem;
 
@@ -214,7 +222,9 @@
           display: none;
         }
       }
+
       @include respond-until($screen-s) {
+        maring-bottom: 2.5rem;
         border-bottom: none;
 
         &:nth-of-type(3) {

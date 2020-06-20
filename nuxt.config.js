@@ -1,12 +1,6 @@
-import Mode from 'frontmatter-markdown-loader/mode'
-const routerBase = {
-  router: {
-    base: '/'
-  }
-}
-
 export default {
   mode: 'spa',
+  telemetry: false,
   /*
    ** Headers of the page
    */
@@ -26,7 +20,18 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: {
+    color: '#262626',
+    height: '2px'
+  },
+  pageTransition: {
+    name: 'page',
+    mode: 'out-in',
+    duration: 200,
+  },
+  generate: {
+    fallback: true,
+  },
   /*
    ** Global CSS
    */
@@ -34,7 +39,9 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  ...routerBase,
+  router: {
+    base: '/'
+  },
   plugins: ['~/plugins/konva'],
 
   prismic: {
@@ -71,26 +78,18 @@ export default {
   /*
    ** Build configuration
    */
-
+  
   build: {
     /*
      ** You can extend webpack config here
      */
+    extractCSS: true,
+    devtools: true,
     extend(config, ctx) {
-      config.module.rules.push(
-        {
-          test: /\.md$/,
-          loader: 'frontmatter-markdown-loader',
-          options: {
-            mode: [Mode.VUE_COMPONENT]
-          }
-        },
-        {
-          test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-          loader: 'file-loader'
-        }
-      ),
-        (config.resolve.alias['vue'] = 'vue/dist/vue.common')
+      config.resolve.alias['vue'] = 'vue/dist/vue.common',
+      config.externals = [ {
+        whitelist: ['vue-konva', 'konva', 'vue']
+      }]
     }
   }
 }

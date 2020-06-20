@@ -11,20 +11,22 @@ header {
     padding: 0.5rem 0.75rem 1rem;
   }
 
-  .logo {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  .headerWrapper {
+    position: relative;
+    display: block;
 
     h2 {
       font-size: 3rem;
       line-height: 1em;
       letter-spacing: -0.5px;
-      display: flex;
-      align-items: flex-end;
       transition: font-size 0.2s;
-      flex: 0 0 100px;
       white-space: nowrap;
+      background: $grey;
+      z-index: 9;
+      position: relative;
+      display: inline-block;
+      left: 0;
+      padding-right: 1.5rem;
       @include respond-until($screen-l) {
         font-size: 2.5rem;
       }
@@ -37,23 +39,18 @@ header {
     }
 
     .line {
-      width: auto;
-      height: 1px;
-      background: $black;
       display: block;
-      flex: 1 1 auto;
-      align-self: center;
-      margin-left: 0.75rem;
-      margin-bottom: 0.5rem;
-      @include respond-until($screen-l) {
-        margin-bottom: 0.375rem;
-      }
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 2;
+      max-width: calc(100vw - 300px);
+      overflow: hidden;
       @include respond-until($screen-s) {
-        margin-left: 0.5rem;
-        margin-bottom: 0.3rem;
-      }
-      @include respond-until($screen-xs) {
-        margin-left: 0.375rem;
+        position: relative;
+        right: unset;
+        top: unset;
+        max-width: 100%;
       }
     }
   }
@@ -64,7 +61,7 @@ header {
     grid-gap: 1.25rem;
     align-self: flex-end;
     flex-direction: row;
-    padding-top: 0.5rem;
+    padding-top: 2rem;
     @include respond-until($screen-s) {
       display: none;
     }

@@ -2,7 +2,7 @@
   <div class="gallery">
     <div class="slide">
       <div class="arrow left" v-on:click="decrement">
-        <img src="~/assets/img/smt-arrow.png" alt />
+        <img src="~/assets/img/smt-arrow.svg" alt />
       </div>
       <FormattedImage class="slide-img"
         :field="slides[current].gallery_image"
@@ -10,7 +10,7 @@
         :height="600"
       />
       <div class="arrow right" v-on:click="increment">
-        <img src="~/assets/img/smt-arrow.png" alt />
+        <img src="~/assets/img/smt-arrow.svg" alt />
       </div>
     </div>
     <div class="progressbar">
