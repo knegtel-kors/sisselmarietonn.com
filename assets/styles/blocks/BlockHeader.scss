@@ -3,9 +3,9 @@
 header {
   display: flex;
   flex-direction: column;
-  padding: 1rem 0 3rem;
+  padding: 1rem 2rem 3rem;
   @include respond-until($screen-xl) {
-    padding: 1rem 1.5rem 2rem;
+    padding: 1rem 2rem 2rem;
   }
   @include respond-until($screen-s) {
     padding: 0.5rem 0.75rem 1rem;
@@ -61,7 +61,7 @@ header {
     grid-gap: 1.25rem;
     align-self: flex-end;
     flex-direction: row;
-    padding-top: 2rem;
+    padding-top: 2.5rem;
     @include respond-until($screen-s) {
       display: none;
     }
