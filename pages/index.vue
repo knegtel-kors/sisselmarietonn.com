@@ -1,59 +1,76 @@
 <template>
   <article>
-    <Header />
-    <BigProjectList :projects="bigProjects" />
-    <SmallProjectList :projects="smallProjects" type="project" />
+    <div class="project-wrapper large">
+      <div v-for="(slice, index) in homepage" :key="index">
+        <BigProject v-if="slice.type === 'big_article'" :project="slice.data" />
+        <SmallProjectList
+        v-if="slice.type === 'list_of_articles1'"
+        :projects="slice.data"
+        type="project"
+      />
+      </div>
+    </div>
   </article>
 </template>
 
 <script>
-import Header from '~/components/Header'
-import BigProjectList from '~/components/BigProjectList'
+import BigProject from '~/components/BigProject'
 import SmallProjectList from '~/components/SmallProjectList'
 
 export default {
   components: {
-    Header,
-    BigProjectList,
-    SmallProjectList
+    BigProject,
+    SmallProjectList,
+  },
+  head() {
+    return {
+      title: `Sissel Marie Tonn`,
+    }
   },
   async asyncData({ $prismic, error }) {
     try {
       // Query to get API object
       // this should be modified to get the correct articles
-      const bigProjects = await $prismic.api.query(
-        [
-          $prismic.predicates.at('document.type', 'article'),
-          $prismic.predicates.at('my.article.type', 'Project')
-        ],
-        { orderings: '[my.article.date desc]', pageSize: 3 }
-      )
+      const homepage = await $prismic.api.getSingle('homepage')
 
-      // this should be modified to get the correct articles
-      const smallProjects = await $prismic.api.query(
-        [
-          $prismic.predicates.at('document.type', 'article'),
-          $prismic.predicates.at('my.article.type', 'Project')
-        ],
-        { orderings: '[my.article.date desc]', pageSize: 3 }
-      )
+      const projects = homepage.data.body.map(async (slice) => {
+        if (slice.slice_type === 'big_article') {
+          const id = slice.primary.article.id
+          return {
+            type: slice.slice_type,
+            data: await $prismic.api.getByID(id),
+          }
+        }
+
+        if (slice.slice_type === 'list_of_articles1') {
+          const smallartcles = Object.values(slice.primary).map(
+            async (sliceArray) => {
+              return $prismic.api.getByID(sliceArray.id)
+            }
+          )
+
+          return {
+            type: slice.slice_type,
+            data: await Promise.all(smallartcles),
+          }
+        }
+      })
 
       // Returns data to be used in template
       return {
-        bigProjects: bigProjects.results,
-        smallProjects: smallProjects.results
+        homepage: await Promise.all(projects),
       }
     } catch (e) {
       // Returns error page
       console.log(e)
       error({ statusCode: 404, message: 'Page not found' })
     }
-  }
+  },
 }
 </script>
 
 <style lang="scss">
-@import "~/assets/styles/fonts.scss";
-@import "~/assets/styles/values.scss";
-@import "~/assets/styles/base.scss";
+@import '~/assets/styles/fonts.scss';
+@import '~/assets/styles/values.scss';
+@import '~/assets/styles/base.scss';
 </style>

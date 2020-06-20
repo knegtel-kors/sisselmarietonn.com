@@ -1,6 +1,5 @@
 <template>
   <article>
-    <Header />
     <div class="article-wrapper">
       <div class="article-header">
         <prismic-rich-text :field="article.title" />
@@ -14,9 +13,6 @@
 </template>
 
 <script>
-import textBalancer from 'text-balancer'
-import Header from '~/components/Header'
-import SmallProjectList from '~/components/SmallProjectList'
 import FormattedImage from '~/components/FormattedImage'
 import DateFormatter from '~/components/DateFormatter'
 import TabContent from '~/components/TabContent'
@@ -30,8 +26,6 @@ export default {
     return { selectedTab: 'description' }
   },
   components: {
-    Header,
-    SmallProjectList,
     FormattedImage,
     DateFormatter,
     TabContent
@@ -40,6 +34,8 @@ export default {
     try {
       const article = await $prismic.api.getByUID('article', params.uid)
       // Returns data to be used in template
+      console.log(article.data);
+      
       return {
         article: article.data,
         title: article.data.title[0].text
@@ -50,16 +46,6 @@ export default {
       error({ statusCode: 404, message: 'Page not found' })
     }
   },
-  methods: {},
-  mounted() {
-    textBalancer.balanceText()
-  },
-  filters: {
-    onlyYear(val) {
-      let date = new Date(val)
-      return date.getFullYear()
-    }
-  }
 }
 </script>
 

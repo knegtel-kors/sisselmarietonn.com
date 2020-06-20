@@ -127,6 +127,7 @@
 
     .slices {
       @include block-borders;
+      min-height: 100vh;
 
       .slice {
         padding-bottom: 3rem;
