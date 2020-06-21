@@ -48,7 +48,7 @@ export default {
 
       const w = this.getWidth()
       const h = this.getHeight()
-      const numberOfPoints = Math.round(w / 40)
+      const numberOfPoints = Math.round(w / 30)
       const points = this.getPoints(w, h, numberOfPoints)
 
       line.setPoints(points)
