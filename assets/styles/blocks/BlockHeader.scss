@@ -11,6 +11,27 @@ header {
     padding: 0.5rem 0.75rem 1rem;
   }
 
+  &.open {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    background-color: $grey;
+    z-index: 99;
+
+    nav {
+      display: block;
+      height: 100vh;
+      width: 100vw;
+      left: 0;
+      top: 0;
+      background-color: $grey;
+      grid-template-columns: repeat(1, minmax(min-content, max-content));
+      padding: 2.5rem;
+    }
+  }
+
   .headerWrapper {
     position: relative;
     display: block;
@@ -54,7 +75,20 @@ header {
       }
     }
   }
-
+  .nav-btn {
+    display: none;
+  }
+  @include respond-until($screen-s) {
+    .nav-btn {
+      display: block;
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 3rem;
+      cursor: pointer;
+      z-index: 99;
+    }
+  }
   nav {
     display: grid;
     grid-template-columns: repeat(4, minmax(min-content, max-content));

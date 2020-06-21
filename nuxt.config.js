@@ -85,12 +85,6 @@ export default {
      */
     devtools: true,
     extend(config, ctx) {
-      config.module.rules.push(
-        {
-          test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-          loader: 'file-loader'
-        }
-      ),
       config.resolve.alias['vue'] = 'vue/dist/vue.common',
       config.externals = [ {
         whitelist: ['vue-konva', 'konva', 'vue']
