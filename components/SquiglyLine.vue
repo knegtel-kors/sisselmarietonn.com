@@ -72,7 +72,7 @@ export default {
 
       const w = stage.width()
       const h = stage.height()
-      const numberOfPoints = Math.round(w / 40)
+      const numberOfPoints = Math.round(w / 30)
 
       var tween = new Konva.Tween({
         node: this.$refs.line.getNode(),
