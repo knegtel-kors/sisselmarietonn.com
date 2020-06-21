@@ -2,8 +2,8 @@
   <div class="project-wrapper small">
     <nuxt-link
       class="block-project"
-      v-for="project in projects"
-      :key="project.id"
+      v-for="(project, index) in projects"
+      :key="project.id + index"
       :to="link(project)"
     >
       <!-- Image -->
