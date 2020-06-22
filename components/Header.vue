@@ -8,26 +8,26 @@
     </div>
 
     <nav>
-      <nuxt-link
-        class="nav-link"
-        v-on:click.native="closeMenu()"
-        :to="'/project'"
-        >projects</nuxt-link
-      >
       <nuxt-link class="nav-link" v-on:click.native="closeMenu()" :to="'/about'"
         >About</nuxt-link
       >
       <nuxt-link
         class="nav-link"
         v-on:click.native="closeMenu()"
+        :to="'/project'"
+        >Projects</nuxt-link
+      >
+      <nuxt-link
+        class="nav-link"
+        v-on:click.native="closeMenu()"
         :to="'/illustration'"
-        >illustration</nuxt-link
+        >Illustration</nuxt-link
       >
       <nuxt-link
         class="nav-link"
         v-on:click.native="closeMenu()"
         :to="'/co-learning'"
-        >co-learning</nuxt-link
+        >Co-learning</nuxt-link
       >
     </nav>
     <img
