@@ -46,7 +46,7 @@ export default {
 
   prismic: {
     endpoint: 'https://sisselmarietonn.cdn.prismic.io/api/v2',
-    preview: true
+    preview: '/preview/'
   },
   /*
    ** Nuxt.js dev-modules
