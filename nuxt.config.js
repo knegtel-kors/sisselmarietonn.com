@@ -45,7 +45,8 @@ export default {
   plugins: ['~/plugins/konva'],
 
   prismic: {
-    endpoint: 'https://sisselmarietonn.cdn.prismic.io/api/v2'
+    endpoint: 'https://sisselmarietonn.cdn.prismic.io/api/v2',
+    preview: true
   },
   /*
    ** Nuxt.js dev-modules
