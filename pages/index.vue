@@ -50,11 +50,20 @@ export default {
         }
 
         if (slice.slice_type === 'list_of_articles1') {
-          const smallartcles = Object.values(slice.primary).map(
+          // filter out all undefined project ids
+          const ids = Object.values(slice.primary).filter((sliceArray) => {
+            return Boolean(sliceArray.id)
+          })
+          // use ids to get the content
+          const smallartcles = ids.map(
             async (sliceArray) => {
-              return $prismic.api.getByID(sliceArray.id)
+              if (sliceArray.id) {
+                return $prismic.api.getByID(sliceArray.id)
+              }
             }
           )
+
+          console.log(smallartcles)
 
           return {
             type: slice.slice_type,
@@ -70,7 +79,7 @@ export default {
     } catch (e) {
       // Returns error page
       console.log(e)
-      error({ statusCode: 404, message: 'Page not found' })
+      error({ statusCode: 404, message: 'Failed to retrieve page, please check if content exists.' })
     }
   },
 }
