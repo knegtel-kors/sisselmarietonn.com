@@ -16,7 +16,7 @@ import TabContent from '~/components/TabContent'
 export default {
   head() {
     return {
-      title: `${this.title} by Sissel Marie Tonn`
+      title: `${this.title} Sissel Marie Tonn`
     }
   },
   data() {
