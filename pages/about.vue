@@ -1,10 +1,14 @@
 <template>
   <article>
-    <prismic-rich-text :field="article.title" />
-    <FormattedImage :field="article.header" :width="800" :height="600" />
-    <DateFormatter :data="article" />
-    <prismic-rich-text :field="article.credits" />
-    <TabContent :data="article" />
+    <div class="article-wrapper about">
+      <div class="article-header">
+        <prismic-rich-text :field="article.title" />
+        <FormattedImage :field="article.header" :width="1200" :height="800" />
+      </div>
+      <DateFormatter :data="article" />
+      <prismic-rich-text :field="article.credits" />
+      <TabContent :data="article" />
+    </div>
   </article>
 </template>
 
