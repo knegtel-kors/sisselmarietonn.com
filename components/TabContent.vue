@@ -29,7 +29,7 @@
           :field="slice.primary.text"
         />
         <ImageGallery
-          v-if="slice.slice_type === 'image_gallery'"
+          v-if="slice.slice_type === 'image_gallery' && slice.items.length"
           class="image_gallery"
           :slides="slice.items"
         />
