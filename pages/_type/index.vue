@@ -23,9 +23,6 @@ export default {
       title: `${this.title} by Sissel Marie Tonn`,
     }
   },
-  data() {
-    return { selectedTab: 'description' }
-  },
   components: {
     Pagination,
     OverviewProjectList,

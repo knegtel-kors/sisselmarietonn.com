@@ -75,7 +75,6 @@
         transition: opacity 0.2s;
         object-fit: cover;
         object-position: center;
-        background: red;
         @include respond-until($screen-s) {
           max-height: none;
         }

@@ -22,9 +22,6 @@ export default {
       title: `${this.title} by Sissel Marie Tonn`
     }
   },
-  data() {
-    return { selectedTab: 'description' }
-  },
   components: {
     FormattedImage,
     DateFormatter,
@@ -34,8 +31,6 @@ export default {
     try {
       const article = await $prismic.api.getByUID('article', params.uid)
       // Returns data to be used in template
-      console.log(article.data);
-      
       return {
         article: article.data,
         title: article.data.title[0].text

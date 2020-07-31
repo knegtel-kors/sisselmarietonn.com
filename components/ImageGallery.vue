@@ -43,6 +43,9 @@ export default {
       required: true
     }
   },
+  mounted() {
+    console.log('slides',this.slides)
+  },
   methods: {
     increment() {
       if (this.current + 1 === this.slides.length) {

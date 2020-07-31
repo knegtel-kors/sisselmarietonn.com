@@ -2,6 +2,7 @@
   <div class="article-body">
     <div class="tabs">
       <div
+        v-if="this.showTabs"
         v-on:click="tab = 'description'"
         class="tab"
         v-bind:class="{ active: tab === 'description' }"
@@ -9,6 +10,7 @@
         Description
       </div>
       <div
+        v-if="this.showTabs"
         v-on:click="tab = 'research'"
         class="tab"
         v-bind:class="{ active: tab === 'research' }"
@@ -28,8 +30,13 @@
           class="text"
           :field="slice.primary.text"
         />
+        <div
+          v-if="slice.slice_type === 'embed___iframe'"
+          v-html="slice.primary.embed[0].text"
+        >
+        </div>
         <ImageGallery
-          v-if="slice.slice_type === 'image_gallery'"
+          v-if="slice.slice_type === 'image_gallery' && slice.items.length"
           class="image_gallery"
           :slides="slice.items"
         />
@@ -53,27 +60,27 @@ export default {
   data() {
     return {
       tab: 'description',
-      content: this.data
+      content: this.data,
+      showTabs: this.data['description'].length && this.data['research'].length
     }
   },
   components: {
     ImageGallery,
-    FormattedImage
+    FormattedImage,
   },
   props: {
     data: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   filters: {
     // https://user-guides.prismic.io/en/articles/3309829-image-optimization-imgix-integration
     params(url, width = 'auto', height = 'auto') {
       return (url += `,fit=crop&w=${width}&h=${height}`)
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

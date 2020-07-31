@@ -23,9 +23,6 @@ export default {
       title: `${this.title} Sissel Marie Tonn`
     }
   },
-  data() {
-    return { selectedTab: 'description' }
-  },
   components: {
     FormattedImage,
     DateFormatter,
