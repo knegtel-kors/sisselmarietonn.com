@@ -15,6 +15,14 @@ export default {
         type: 'image/x-icon',
         href: 'favicon.ico',
       },
+      // <link rel="preload" href="font.woff2" as="font" type="font/woff2" crossorigin></link>
+      {
+        rel: 'preload',
+        href: '/_nuxt/assets/fonts/Sneak-Regular.woff2',
+        as: 'font',
+        type: 'font/woff2',
+        crossorigin: true
+      }
     ],
   },
   /*
