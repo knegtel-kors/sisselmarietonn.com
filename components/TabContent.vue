@@ -30,6 +30,11 @@
           class="text"
           :field="slice.primary.text"
         />
+        <div
+          v-if="slice.slice_type === 'embed___iframe'"
+          v-html="slice.primary.embed[0].text"
+        >
+        </div>
         <ImageGallery
           v-if="slice.slice_type === 'image_gallery' && slice.items.length"
           class="image_gallery"
