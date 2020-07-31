@@ -46,7 +46,7 @@
       border-bottom: 1px solid;
 
       &:hover {
-        .project-img {
+        .project-img img {
           opacity: 0.7;
         }
       }
@@ -67,7 +67,7 @@
         }
       }
 
-      .project-img {
+      .project-img img {
         order: 0;
         min-height: 0;
         max-height: 300px;
@@ -205,7 +205,7 @@
       border-bottom: 1px solid;
 
       &:hover {
-        .project-img {
+        .project-img img {
           opacity: 0.5;
         }
       }
@@ -218,7 +218,7 @@
         border-bottom: none;
       }
 
-      .project-img {
+      .project-img img {
         object-fit: cover;
         object-position: center;
         cursor: pointer;
