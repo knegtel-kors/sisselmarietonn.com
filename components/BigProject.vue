@@ -49,9 +49,6 @@ export default {
     DateFormatter,
     FormattedImage,
   },
-  mounted() {
-    console.log('test')
-  },
   methods: {
     link(project) {
       return LinkResolver(project)
