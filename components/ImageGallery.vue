@@ -5,6 +5,7 @@
         <img src="~/assets/img/smt-arrow.svg" alt />
       </div>
       <FormattedImage class="slide-img"
+        v-if="slides[current].gallery_image"
         :field="slides[current].gallery_image"
         :width="800"
         :height="600"
@@ -42,9 +43,6 @@ export default {
       type: Array,
       required: true
     }
-  },
-  mounted() {
-    console.log('slides',this.slides)
   },
   methods: {
     increment() {

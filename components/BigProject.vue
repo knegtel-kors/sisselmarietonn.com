@@ -2,6 +2,7 @@
   <div class="block-project">
     <nuxt-link class="view-project" :to="link(project)">
       <FormattedImage
+        v-if="project.data.header"
         class="project-img"
         :field="project.data.header"
         :width="800"
@@ -48,9 +49,6 @@ export default {
   components: {
     DateFormatter,
     FormattedImage,
-  },
-  mounted() {
-    console.log('test')
   },
   methods: {
     link(project) {

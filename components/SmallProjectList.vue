@@ -8,6 +8,7 @@
     >
       <!-- Image -->
       <FormattedImage
+        v-if="project.data.header"
         class="project-img"
         :field="project.data.header"
         :width="400"
@@ -44,16 +45,16 @@ export default {
   props: {
     projects: {
       type: Array,
-      required: true
+      required: true,
     },
     type: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   components: {
     DateFormatter,
-    FormattedImage
+    FormattedImage,
   },
   mounted() {
     textBalancer.balanceText()
@@ -61,8 +62,8 @@ export default {
   methods: {
     link(project) {
       return LinkResolver(project)
-    }
-  }
+    },
+  },
 }
 </script>
 
