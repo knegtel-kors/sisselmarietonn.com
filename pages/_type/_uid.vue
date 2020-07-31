@@ -5,7 +5,12 @@
         <prismic-rich-text :field="article.title" />
         <DateFormatter :data="article" />
       </div>
-      <FormattedImage :field="article.header" :width="1200" :height="800" />
+      <FormattedImage
+        v-if="article.header"
+        :field="article.header"
+        :width="1200"
+        :height="800"
+      />
       <prismic-rich-text class="header-caption" :field="article.credits" />
       <TabContent :data="article" />
     </div>
@@ -19,13 +24,13 @@ import TabContent from '~/components/TabContent'
 export default {
   head() {
     return {
-      title: `${this.title} by Sissel Marie Tonn`
+      title: `${this.title} by Sissel Marie Tonn`,
     }
   },
   components: {
     FormattedImage,
     DateFormatter,
-    TabContent
+    TabContent,
   },
   async asyncData({ $prismic, error, params }) {
     try {
@@ -33,7 +38,7 @@ export default {
       // Returns data to be used in template
       return {
         article: article.data,
-        title: article.data.title[0].text
+        title: article.data.title[0].text,
       }
     } catch (e) {
       // Returns error page

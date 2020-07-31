@@ -2,6 +2,7 @@
   <div class="project-wrapper large">
     <div class="block-project" v-for="project in projects" :key="project.id">
       <FormattedImage
+        v-if="project.data.header"
         class="project-img"
         :field="project.data.header"
         :width="800"

@@ -7,10 +7,9 @@ export default function (doc) {
   if (doc.type === 'homepage') {
     return '/'
   }
-  
+
   const type = get(doc, [ 'data', 'type' ])
-  console.log(doc.type);
-  
+
   if (doc.type === 'article' && type === 'about') {
     return `/${doc.uid}`
   }

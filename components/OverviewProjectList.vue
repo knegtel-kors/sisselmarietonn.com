@@ -8,6 +8,7 @@
     >
       <!-- Image -->
       <FormattedImage
+        v-if="project.data.header"
         class="project-img"
         :field="project.data.header"
         :width="400"

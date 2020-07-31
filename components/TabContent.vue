@@ -22,8 +22,8 @@
     <div class="slices">
       <div
         class="slice"
-        v-for="slice in content[tab]"
-        :key="JSON.stringify(slice).toString()"
+        v-for="(slice, index) in content[tab]"
+        :key="JSON.stringify(slice).toString() + index"
       >
         <prismic-rich-text
           v-if="slice.slice_type === 'text'"
@@ -41,7 +41,7 @@
           :slides="slice.items"
         />
         <FormattedImage
-          v-if="slice.slice_type === 'fullwidth_image'"
+          v-if="slice.primary.image && slice.slice_type === 'fullwidth_image' || 'full-width_image'"
           class="fullwidth_image"
           :field="slice.primary.image"
           :width="800"

@@ -63,8 +63,6 @@ export default {
             }
           )
 
-          console.log(smallartcles)
-
           return {
             type: slice.slice_type,
             data: await Promise.all(smallartcles),
