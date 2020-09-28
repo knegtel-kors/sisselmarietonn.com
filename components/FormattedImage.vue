@@ -1,17 +1,25 @@
 <template>
-  <img
-    loading="lazy"
-    v-if="field && field.url"
-    :srcset="params(field.url, this.width, this.height)"
-    :alt="field.alt"
-    class="hires"
-  />
+  <div>
+    <img
+      loading="lazy"
+      v-if="field && field.url"
+      :srcset="params(field.url, this.width, this.height)"
+      :alt="field.alt"
+      class="hires"
+    />
+    <prismic-rich-text
+      v-if="captions"
+      class="image-caption"
+      :field="captions"
+    />
+  </div>
 </template>
 
 <script>
 export default {
   props: {
     field: {},
+    captions: {},
     width: {
       type: Number,
       required: false,
@@ -52,28 +60,4 @@ export default {
   },
 }
 </script>
-<style lang="scss">
-.fade-enter-active {
-  transition: opacity 0.1s;
-}
-.fade-enter {
-  opacity: 0;
-}
-
-.FormattedImageWrapper {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  /* Set height to atleast 300px */
-  min-height: 222px;
-}
-
-.placeholder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-}
-</style>
+<style lang="scss"></style>

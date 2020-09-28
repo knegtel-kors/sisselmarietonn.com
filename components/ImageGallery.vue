@@ -4,11 +4,14 @@
       <div class="arrow left" v-on:click="decrement">
         <img src="~/assets/img/smt-arrow.svg" alt />
       </div>
-      <FormattedImage class="slide-img"
+      <FormattedImage
+        class="slide-img"
         v-if="slides[current].gallery_image"
         :field="slides[current].gallery_image"
+        :captions="slides[current].image_captions"
         :width="800"
         :height="600"
+        @click.native="toggleLightBox()"
       />
       <div class="arrow right" v-on:click="increment">
         <img src="~/assets/img/smt-arrow.svg" alt />
@@ -23,28 +26,46 @@
         v-on:click="current = index"
       ></span>
     </div>
+    <LightBox
+      v-if="showLightBox"
+      :image="slides[current].gallery_image"
+      :captions="slides[current].image_captions"
+      @click.native="toggleLightBox()"
+    />
   </div>
 </template>
 
 <script>
 import FormattedImage from '~/components/FormattedImage'
+import LightBox from '~/components/LightBox'
 
 export default {
   data() {
     return {
-      current: 0
+      current: 0,
+      showLightBox: false,
     }
   },
   components: {
-    FormattedImage
+    FormattedImage,
+    LightBox,
   },
   props: {
     slides: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
+  watch: {
+  // whenever active changes, this function will run
+  showLightBox: function () {
+    document.body.style.overflow = this.showLightBox ? 'hidden' : ''
+  }
+},
   methods: {
+    toggleLightBox() {
+      this.showLightBox = !this.showLightBox
+    },
     increment() {
       if (this.current + 1 === this.slides.length) {
         return (this.current = 0)
@@ -53,13 +74,12 @@ export default {
     },
     decrement() {
       if (this.current === 0) {
-        return this.current = this.slides.length - 1
+        return (this.current = this.slides.length - 1)
       }
       return this.current--
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
