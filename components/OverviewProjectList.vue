@@ -14,6 +14,14 @@
         :width="400"
         :height="300"
       />
+      <FormattedImage
+        v-if="project.data.header_gallery.length"
+        class="project-img"
+        :field="project.data.header_gallery[0].image"
+        :width="400"
+        :height="300"
+      />
+
       <div class="project-info">
         <!-- Title -->
         <prismic-rich-text :field="project.data.title" />

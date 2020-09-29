@@ -60,4 +60,12 @@ export default {
   },
 }
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.slide .image-caption {
+  &:before,
+  &:after {
+    display: none !important;
+    margin: 0 auto; // align this properly
+  }
+}
+</style>
