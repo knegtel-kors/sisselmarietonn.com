@@ -8,14 +8,14 @@
     >
       <!-- Image -->
       <FormattedImage
-        v-if="project.data.header"
+        v-if="_get(project, ['data', 'header'])"
         class="project-img"
         :field="project.data.header"
         :width="400"
         :height="300"
       />
       <FormattedImage
-        v-if="project.data.header_gallery.length"
+        v-if="_get(project, ['data', 'header_gallery']).length"
         class="project-img"
         :field="project.data.header_gallery[0].image"
         :width="400"
@@ -40,7 +40,6 @@
         </div>
       </div>
     </nuxt-link>
-
   </div>
 </template>
 
@@ -49,6 +48,7 @@ import LinkResolver from '~/plugins/link-resolver.js'
 import textBalancer from 'text-balancer'
 import FormattedImage from '~/components/FormattedImage'
 import DateFormatter from '~/components/DateFormatter'
+import get from 'lodash.get'
 
 export default {
   props: {
@@ -78,6 +78,9 @@ export default {
       if (type === 'co-learning') return 'projects'
 
       return type
+    },
+    _get(object, path) {
+      return get(object, path)
     }
   }
 }
