@@ -23,10 +23,10 @@ import FormattedImage from '~/components/FormattedImage'
 export default {
   props: {
     image: {},
-    captions: {},
+    captions: {}
   },
   components: {
-    FormattedImage,
+    FormattedImage
   }
 }
 </script>
@@ -55,6 +55,10 @@ export default {
   .lightbox-img {
     max-width: calc(100% - 1rem);
     height: auto;
+  }
+
+  .lightbox-img img {
+    max-height: 100vh;
   }
 }
 </style>
