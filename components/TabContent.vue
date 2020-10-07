@@ -22,8 +22,8 @@
     <div class="slices">
       <div
         class="slice"
-        v-for="slice in content[tab]"
-        :key="JSON.stringify(slice).toString()"
+        v-for="(slice, index) in content[tab]"
+        :key="JSON.stringify(slice).toString() + index"
       >
         <prismic-rich-text
           v-if="slice.slice_type === 'text'"
@@ -32,16 +32,19 @@
         />
         <div
           v-if="slice.slice_type === 'embed___iframe'"
+          class="embed___iframe"
           v-html="slice.primary.embed[0].text"
-        >
-        </div>
+        ></div>
         <ImageGallery
           v-if="slice.slice_type === 'image_gallery' && slice.items.length"
           class="image_gallery"
           :slides="slice.items"
         />
         <FormattedImage
-          v-if="slice.slice_type === 'fullwidth_image'"
+          v-if="
+            (slice.primary.image && slice.slice_type === 'fullwidth_image') ||
+              'full-width_image'
+          "
           class="fullwidth_image"
           :field="slice.primary.image"
           :width="800"
@@ -66,20 +69,20 @@ export default {
   },
   components: {
     ImageGallery,
-    FormattedImage,
+    FormattedImage
   },
   props: {
     data: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   filters: {
     // https://user-guides.prismic.io/en/articles/3309829-image-optimization-imgix-integration
     params(url, width = 'auto', height = 'auto') {
       return (url += `,fit=crop&w=${width}&h=${height}`)
-    },
-  },
+    }
+  }
 }
 </script>
 

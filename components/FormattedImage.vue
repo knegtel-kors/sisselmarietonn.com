@@ -1,31 +1,25 @@
 <template>
-  <div class="FormattedImageWrapper">
+  <div>
     <img
-      v-if="Object.keys(field).length !== 0"
-      :src="formatUrl(field.url, ...reduceFraction([this.width, this.height]))"
+      loading="lazy"
+      v-if="field && field.url"
+      :srcset="params(field.url, this.width, this.height)"
       :alt="field.alt"
-      v-on:load="showFullImage"
+      class="hires"
     />
-    <transition name="fade">
-      <img
-        loading="lazy"
-        v-if="Object.keys(field).length !== 0 && fullImage"
-        :srcset="params(field.url, this.width, this.height)"
-        :alt="field.alt"
-        class="placeholder"
-
-      />
-    </transition>
+    <prismic-rich-text
+      v-if="captions"
+      class="image-caption"
+      :field="captions"
+    />
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    field: {
-      type: Object,
-      required: true,
-    },
+    field: {},
+    captions: {},
     width: {
       type: Number,
       required: false,
@@ -57,10 +51,7 @@ export default {
     formatUrl(url, width = 'auto', height = 'auto', scale = 1) {
       return `${url},fit=crop&w=${width * scale}&h=${height * scale} ${scale}x`
     },
-    showFullImage() {
-      this.fullImage = true
-    },
-    params(url, width, height) {
+    params(url, width = 'auto', height = 'auto') {
       const size1 = this.formatUrl(url, width, height, 1)
       const size2 = this.formatUrl(url, width, height, 1.5)
       const size3 = this.formatUrl(url, width, height, 2)
@@ -70,22 +61,11 @@ export default {
 }
 </script>
 <style lang="scss">
-.fade-enter-active {
-  transition: opacity 0.1s;
-}
-.fade-enter {
-  opacity: 0;
-}
-
-.FormattedImageWrapper {
-  position: relative;
-}
-
-.placeholder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.slide .image-caption {
+  &:before,
+  &:after {
+    display: none !important;
+    margin: 0 auto; // align this properly
+  }
 }
 </style>

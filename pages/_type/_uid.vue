@@ -5,8 +5,22 @@
         <prismic-rich-text :field="article.title" />
         <DateFormatter :data="article" />
       </div>
-      <FormattedImage :field="article.header" :width="1200" :height="800" />
-      <prismic-rich-text class="header-caption" :field="article.credits" />
+      <FormattedImage
+        v-if="article.header"
+        :field="article.header"
+        :width="1200"
+        :height="800"
+      />
+      <ImageGalleryHeader
+        v-if="article.header_gallery.length"
+        class="image_gallery"
+        :slides="article.header_gallery"
+      />
+      <prismic-rich-text
+        v-if="!article.header_gallery.length"
+        class="header-caption"
+        :field="article.credits"
+      />
       <TabContent :data="article" />
     </div>
   </article>
@@ -15,25 +29,28 @@
 <script>
 import FormattedImage from '~/components/FormattedImage'
 import DateFormatter from '~/components/DateFormatter'
+import ImageGalleryHeader from '~/components/ImageGalleryHeader'
 import TabContent from '~/components/TabContent'
 export default {
   head() {
     return {
-      title: `${this.title} by Sissel Marie Tonn`
+      title: `${this.title} by Sissel Marie Tonn`,
     }
   },
   components: {
     FormattedImage,
     DateFormatter,
-    TabContent
+    ImageGalleryHeader,
+    TabContent,
   },
   async asyncData({ $prismic, error, params }) {
     try {
       const article = await $prismic.api.getByUID('article', params.uid)
       // Returns data to be used in template
+      console.log(article.data)
       return {
         article: article.data,
-        title: article.data.title[0].text
+        title: article.data.title[0].text,
       }
     } catch (e) {
       // Returns error page
