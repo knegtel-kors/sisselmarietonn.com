@@ -14,7 +14,7 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/prismic": "^1.0.1",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "eslint": "^7.4.0",
+    "eslint": "^7.12.1",
     "konva": "^7.0.3",
     "lodash.debounce": "^4.0.8",
     "lodash.find": "^4.6.0",
