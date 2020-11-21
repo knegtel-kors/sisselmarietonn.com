@@ -8,16 +8,16 @@
     >
       <!-- Image -->
       <FormattedImage
-        v-if="_get(project, ['data', 'header'])"
+        v-if="HeaderImage(project)"
         class="project-img"
-        :field="project.data.header"
+        :field="HeaderImage(project)"
         :width="400"
         :height="300"
       />
       <FormattedImage
-        v-if="_get(project, ['data', 'header_gallery']).length"
+        v-if="GalleryImage(project)"
         class="project-img"
-        :field="project.data.header_gallery[0].image"
+        :field="GalleryImage(project)"
         :width="400"
         :height="300"
       />
@@ -29,9 +29,9 @@
           <!-- Date -->
           <DateFormatter class="dateline" :data="project.data" />
           <!-- Project Type -->
-          <!-- <span class="type">
+          <span class="type">
             {{ project.data.type }}
-          </span> -->
+          </span>
           <!-- View Project -->
           <div class="view-project">
             <span>View</span>
@@ -49,6 +49,7 @@ import textBalancer from 'text-balancer'
 import FormattedImage from '~/components/FormattedImage'
 import DateFormatter from '~/components/DateFormatter'
 import get from 'lodash.get'
+import head from 'lodash.head'
 
 export default {
   props: {
@@ -79,10 +80,14 @@ export default {
 
       return type
     },
-    _get(object, path) {
-      return get(object, path)
+    HeaderImage(project) {
+      return get(project, ['data', 'header'])
+    },
+    GalleryImage(project) {
+      const firstSlide = head(get(project, ['data', 'header_gallery']))
+      return get(firstSlide, ['image'])
     }
-  }
+  },
 }
 </script>
 
