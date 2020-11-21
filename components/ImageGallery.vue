@@ -1,5 +1,5 @@
 <template>
-  <div class="gallery">
+  <div v-if="hasFirstImage" class="gallery">
     <div class="slide">
       <div class="arrow left" v-on:click="decrement">
         <img src="~/assets/img/smt-arrow.svg" alt />
@@ -38,6 +38,8 @@
 <script>
 import FormattedImage from '~/components/FormattedImage'
 import LightBox from '~/components/LightBox'
+import get from 'lodash.get'
+import head from 'lodash.head'
 
 export default {
   data() {
@@ -55,6 +57,14 @@ export default {
       type: Array,
       required: true,
     },
+  },
+  computed: {
+    hasFirstImage() {
+      // get the first slide
+      // get the gallery_image url
+      // force to boolean
+      return Boolean(get(head(this.slides), ['gallery_image', 'url']))
+    }
   },
   watch: {
   // whenever active changes, this function will run
