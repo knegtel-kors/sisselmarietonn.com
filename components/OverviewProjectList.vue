@@ -8,12 +8,20 @@
     >
       <!-- Image -->
       <FormattedImage
-        v-if="project.data.header"
+        v-if="HeaderImage(project)"
         class="project-img"
-        :field="project.data.header"
+        :field="HeaderImage(project)"
         :width="400"
         :height="300"
       />
+      <FormattedImage
+        v-if="GalleryImage(project)"
+        class="project-img"
+        :field="GalleryImage(project)"
+        :width="400"
+        :height="300"
+      />
+
       <div class="project-info">
         <!-- Title -->
         <prismic-rich-text :field="project.data.title" />
@@ -21,9 +29,9 @@
           <!-- Date -->
           <DateFormatter class="dateline" :data="project.data" />
           <!-- Project Type -->
-          <!-- <span class="type">
+          <span class="type">
             {{ project.data.type }}
-          </span> -->
+          </span>
           <!-- View Project -->
           <div class="view-project">
             <span>View</span>
@@ -32,7 +40,6 @@
         </div>
       </div>
     </nuxt-link>
-
   </div>
 </template>
 
@@ -41,6 +48,8 @@ import LinkResolver from '~/plugins/link-resolver.js'
 import textBalancer from 'text-balancer'
 import FormattedImage from '~/components/FormattedImage'
 import DateFormatter from '~/components/DateFormatter'
+import get from 'lodash.get'
+import head from 'lodash.head'
 
 export default {
   props: {
@@ -70,8 +79,15 @@ export default {
       if (type === 'co-learning') return 'projects'
 
       return type
+    },
+    HeaderImage(project) {
+      return get(project, ['data', 'header'])
+    },
+    GalleryImage(project) {
+      const firstSlide = head(get(project, ['data', 'header_gallery']))
+      return get(firstSlide, ['image'])
     }
-  }
+  },
 }
 </script>
 

@@ -1,11 +1,15 @@
 // Sneak Regular
 @font-face {
   font-family: 'Sneak-Regular';
-  src: url("~assets/fonts/Sneak-Regular.woff2") format("woff2"), url("~assets/fonts/Sneak-Regular.woff") format("woff");
+  unicode-range: U+000-5FF;
+  src: local('Sneak-Regular');
+  src:  url("~assets/fonts/Sneak-Regular.woff2") format("woff2"), url("~assets/fonts/Sneak-Regular.woff") format("woff");
 }
 // Sneak Italic
 @font-face {
   font-family: 'Sneak-Regular';
-  src: url("~assets/fonts/Sneak-Regular-Italic.woff2") format("woff2"), url("~assets/fonts/Sneak-Regular-Italic.woff") format("woff");
+  unicode-range: U+000-5FF;
+  src: local('Sneak-Regular');
+  src:  url("~assets/fonts/Sneak-Regular-Italic.woff2") format("woff2"), url("~assets/fonts/Sneak-Regular-Italic.woff") format("woff");
   font-style: italic;
 }

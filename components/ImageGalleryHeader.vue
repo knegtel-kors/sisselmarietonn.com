@@ -1,14 +1,14 @@
 <template>
-  <div v-if="hasFirstImage" class="gallery">
+  <div class="gallery-header">
     <div class="slide">
       <div class="arrow left" v-on:click="decrement">
         <img src="~/assets/img/smt-arrow.svg" alt />
       </div>
       <FormattedImage
         class="slide-img"
-        v-if="slides[current].gallery_image"
-        :field="slides[current].gallery_image"
-        :captions="slides[current].image_captions"
+        v-if="slides[current].image"
+        :field="slides[current].image"
+        :captions="slides[current].caption"
         :width="800"
         :height="600"
         @click.native="toggleLightBox()"
@@ -22,14 +22,14 @@
         class="bar"
         v-for="(slide, index) in slides"
         v-bind:class="{ active: current === index }"
-        :key="slide.gallery_image.url"
+        :key="slide.image.url"
         v-on:click="current = index"
       ></span>
     </div>
     <LightBox
       v-if="showLightBox"
-      :image="slides[current].gallery_image"
-      :captions="slides[current].image_captions"
+      :image="slides[current].image"
+      :captions="slides[current].caption"
       @click.native="toggleLightBox()"
     />
   </div>
@@ -38,8 +38,6 @@
 <script>
 import FormattedImage from '~/components/FormattedImage'
 import LightBox from '~/components/LightBox'
-import get from 'lodash.get'
-import head from 'lodash.head'
 
 export default {
   data() {
@@ -57,14 +55,6 @@ export default {
       type: Array,
       required: true,
     },
-  },
-  computed: {
-    hasFirstImage() {
-      // get the first slide
-      // get the gallery_image url
-      // force to boolean
-      return Boolean(get(head(this.slides), ['gallery_image', 'url']))
-    }
   },
   watch: {
   // whenever active changes, this function will run

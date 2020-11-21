@@ -19,6 +19,7 @@
     "lodash.debounce": "^4.0.8",
     "lodash.find": "^4.6.0",
     "lodash.get": "^4.4.2",
+    "lodash.head": "^4.0.1",
     "nuxt": "^2.13.0",
     "nuxt-social-meta": "^0.0.5",
     "string-strip-html": "^4.5.0",

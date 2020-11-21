@@ -11,7 +11,16 @@
         :width="1200"
         :height="800"
       />
-      <prismic-rich-text class="header-caption" :field="article.credits" />
+      <ImageGalleryHeader
+        v-if="article.header_gallery.length"
+        class="image_gallery"
+        :slides="article.header_gallery"
+      />
+      <prismic-rich-text
+        v-if="!article.header_gallery.length"
+        class="header-caption"
+        :field="article.credits"
+      />
       <TabContent :data="article" />
     </div>
   </article>
@@ -20,6 +29,7 @@
 <script>
 import FormattedImage from '~/components/FormattedImage'
 import DateFormatter from '~/components/DateFormatter'
+import ImageGalleryHeader from '~/components/ImageGalleryHeader'
 import TabContent from '~/components/TabContent'
 export default {
   head() {
@@ -30,6 +40,7 @@ export default {
   components: {
     FormattedImage,
     DateFormatter,
+    ImageGalleryHeader,
     TabContent,
   },
   async asyncData({ $prismic, error, params }) {
