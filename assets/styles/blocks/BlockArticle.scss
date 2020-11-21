@@ -152,6 +152,14 @@
         @include respond-until($screen-xs) {
           padding: 0 1rem 2rem;
         }
+
+        .embed___iframe {
+          iframe {
+            max-width: 700px;
+            margin: 0 auto;
+            display: block;
+          }
+        }
         // Dropcap
         &:first-of-type {
           .text {
