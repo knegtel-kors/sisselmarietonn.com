@@ -48,7 +48,8 @@ export default {
    ** Plugins to load before mounting the App
    */
   router: {
-    base: '/'
+    base: '/',
+    trailingSlash: false
   },
   plugins: ['~/plugins/konva'],
 
@@ -69,6 +70,7 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
+    '@nuxtjs/style-resources',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
@@ -84,6 +86,10 @@ export default {
       themeColor: '#ffffff'
     }]
   ],
+    // Doc: https://hackernoon.com/how-i-use-scss-variables-mixins-functions-globally-in-nuxt-js-projects-while-compiling-css-utilit-58bb6ff30438
+    styleResources: {
+      scss: ['assets/styles/values.scss', 'assets/styles/mixins.scss'],
+    },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

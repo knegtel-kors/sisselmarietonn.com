@@ -48,7 +48,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-@import '~/assets/styles/blocks/Pagination.scss';
-</style>

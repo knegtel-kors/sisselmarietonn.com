@@ -1,9 +1,7 @@
 <template>
   <footer>
-    <p>Design by <nuxt-link to="http://titusknegtel.nl/" target="_blank">Titus Knegtel</nuxt-link></p>
-    <p>Development by <nuxt-link to="http://stefkors.com/" target="_blank">Stef Kors</nuxt-link></p>
+    <p>Design by <a href="https://titusknegtel.nl/" >Titus Knegtel</a></p>
+    <p>Development by <a href="https://stefkors.com/" >Stef Kors</a></p>
   </footer>
 </template>
-<style lang="scss">
-@import '~/assets/styles/blocks/Footer.scss';
-</style>
+

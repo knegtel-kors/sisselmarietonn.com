@@ -1,5 +1,3 @@
-@import '../values.scss';
-
 .project-wrapper {
   @include respond-until($screen-s) {
     padding: 0 0.75rem;

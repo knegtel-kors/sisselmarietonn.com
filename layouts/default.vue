@@ -16,27 +16,14 @@ export default {
   },
 }
 </script>
-<style>
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-img {
-  width: 100%;
-}
+<style lang="scss">
+@import '~/assets/styles/fonts.scss';
+@import '~/assets/styles/base.scss';
+@import '~/assets/styles/blocks/BlockProjectLarge.scss';
+@import '~/assets/styles/blocks/Footer.scss';
+@import '~/assets/styles/blocks/BlockHeader.scss';
+@import '~/assets/styles/blocks/BlockProjectSmall.scss';
+@import '~/assets/styles/blocks/Pagination.scss';
+@import '~/assets/styles/blocks/BlockArticle.scss';
+@import '~/assets/styles/blocks/BlockGallery.scss';
 </style>
