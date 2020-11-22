@@ -6,18 +6,18 @@
         <DateFormatter :data="article" />
       </div>
       <FormattedImage
-        v-if="article.header"
+        v-if="hasHeader(article)"
         :field="article.header"
         :width="1200"
         :height="800"
       />
       <ImageGalleryHeader
-        v-if="article.header_gallery.length"
+        v-if="hasHeaderGallery(article)"
         class="image_gallery"
         :slides="article.header_gallery"
       />
       <prismic-rich-text
-        v-if="!article.header_gallery.length"
+        v-if="!hasHeaderGallery(article)"
         class="header-caption"
         :field="article.credits"
       />
@@ -31,6 +31,9 @@ import FormattedImage from '~/components/FormattedImage'
 import DateFormatter from '~/components/DateFormatter'
 import ImageGalleryHeader from '~/components/ImageGalleryHeader'
 import TabContent from '~/components/TabContent'
+import get from 'lodash.get'
+import head from 'lodash.head'
+
 export default {
   head() {
     return {
@@ -57,5 +60,13 @@ export default {
       error({ statusCode: 404, message: 'Page not found' })
     }
   },
+  methods: {
+    hasHeader(article) {
+      return Boolean(get(article, ['header']))
+    },
+    hasHeaderGallery(article) {
+      return Boolean(get(article, ['header_gallery']))
+    },
+  }
 }
 </script>
