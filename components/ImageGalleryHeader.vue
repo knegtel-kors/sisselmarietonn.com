@@ -6,7 +6,7 @@
       </div>
       <FormattedImage
         class="slide-img"
-        v-if="slides[current].image"
+        v-if="hasHeaderImage(slides[current])"
         :field="slides[current].image"
         :captions="slides[current].caption"
         :width="800"
@@ -38,6 +38,7 @@
 <script>
 import FormattedImage from '~/components/FormattedImage'
 import LightBox from '~/components/LightBox'
+import get from 'lodash.get'
 
 export default {
   data() {
@@ -77,6 +78,9 @@ export default {
         return (this.current = this.slides.length - 1)
       }
       return this.current--
+    },
+    hasHeaderImage(slide) {
+      return Boolean(get(slide, ['image']))
     },
   },
 }
