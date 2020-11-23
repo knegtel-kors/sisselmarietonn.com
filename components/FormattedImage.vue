@@ -8,9 +8,9 @@
       class="hires"
     />
     <prismic-rich-text
-      v-if="captions"
+      v-if="captions || (field && field.copyright)"
       class="image-caption"
-      :field="captions"
+      :field="captions || field.copyright"
     />
   </div>
 </template>
