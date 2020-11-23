@@ -4,29 +4,29 @@
       <nuxt-link to="/" ref="logo">
         <h2>Sissel Marie Tonn</h2>
       </nuxt-link>
-      <SquiglyLine class="line" />
+      <client-only>
+        <!-- this component will only be rendered on client-side -->
+        <SquiglyLine class="line" />
+      </client-only>
     </div>
 
     <nav>
-      <nuxt-link class="nav-link" v-on:click.native="closeMenu()" :to="'/about'"
+      <nuxt-link class="nav-link" v-on:click.native="closeMenu()" to="/about"
         >About</nuxt-link
       >
-      <nuxt-link
-        class="nav-link"
-        v-on:click.native="closeMenu()"
-        :to="'/project'"
+      <nuxt-link class="nav-link" v-on:click.native="closeMenu()" to="/project"
         >Projects</nuxt-link
       >
       <nuxt-link
         class="nav-link"
         v-on:click.native="closeMenu()"
-        :to="'/illustration'"
+        to="/illustration"
         >Illustration</nuxt-link
       >
       <nuxt-link
         class="nav-link"
         v-on:click.native="closeMenu()"
-        :to="'/co-learning'"
+        to="/co-learning"
         >Co-learning</nuxt-link
       >
     </nav>

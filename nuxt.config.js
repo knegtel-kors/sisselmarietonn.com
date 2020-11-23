@@ -1,5 +1,14 @@
 export default {
-  mode: 'spa',
+  /*
+  ** Nuxt rendering mode
+  ** See https://nuxtjs.org/api/configuration-mode
+  */
+ mode: 'universal',
+ /*
+ ** Nuxt target
+ ** See https://nuxtjs.org/api/configuration-target
+ */
+ target: 'static',
   telemetry: false,
   /*
    ** Headers of the page
@@ -48,8 +57,7 @@ export default {
    ** Plugins to load before mounting the App
    */
   router: {
-    base: '/',
-    trailingSlash: false
+    base: '/'
   },
   plugins: ['~/plugins/konva'],
 
