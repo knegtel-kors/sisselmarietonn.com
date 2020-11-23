@@ -11,7 +11,7 @@
         :captions="slides[current].caption"
         :width="800"
         :height="600"
-        @click.native="toggleLightBox()"
+        @click.native="openLightBox()"
       />
       <div class="arrow right" v-on:click="increment">
         <img src="~/assets/img/smt-arrow.svg" alt />
@@ -26,12 +26,15 @@
         v-on:click="current = index"
       ></span>
     </div>
-    <LightBox
-      v-if="showLightBox"
-      :image="slides[current].image"
-      :captions="slides[current].caption"
-      @click.native="toggleLightBox()"
-    />
+    <div v-if="showLightBox" class="lightbox-wrapper">
+      <LightBox
+        :image="slides[currentLightBox].image"
+        :captions="slides[currentLightBox].caption"
+        v-on:closebox="showLightBox = false"
+        v-on:incrementbox="incrementlightbox"
+        v-on:decrementbox="decrementlightbox"
+      />
+    </div>
   </div>
 </template>
 
@@ -44,6 +47,7 @@ export default {
   data() {
     return {
       current: 0,
+      currentLightBox: 0,
       showLightBox: false,
     }
   },
@@ -58,14 +62,14 @@ export default {
     },
   },
   watch: {
-  // whenever active changes, this function will run
-  showLightBox: function () {
-    document.body.style.overflow = this.showLightBox ? 'hidden' : ''
-  }
-},
+    // whenever active changes, this function will run
+    showLightBox: function () {
+      document.body.style.overflow = this.showLightBox ? 'hidden' : ''
+    },
+  },
   methods: {
-    toggleLightBox() {
-      this.showLightBox = !this.showLightBox
+    openLightBox() {
+      this.showLightBox = true
     },
     increment() {
       if (this.current + 1 === this.slides.length) {
@@ -79,11 +83,21 @@ export default {
       }
       return this.current--
     },
+    incrementlightbox() {
+      if (this.currentLightBox + 1 === this.slides.length) {
+        return (this.currentLightBox = 0)
+      }
+      return this.currentLightBox++
+    },
+    decrementlightbox() {
+      if (this.currentLightBox === 0) {
+        return (this.currentLightBox = this.slides.length - 1)
+      }
+      return this.currentLightBox--
+    },
     hasHeaderImage(slide) {
       return Boolean(get(slide, ['image']))
     },
   },
 }
 </script>
-
-<style lang="scss"></style>

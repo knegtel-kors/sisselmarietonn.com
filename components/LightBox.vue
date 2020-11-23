@@ -4,8 +4,12 @@
       class="lightbox-btn"
       src="~/assets/img/menu-close.svg"
       alt="Close lightbox overlay"
+      @click="$emit('closebox')"
     />
 
+    <div class="arrow left">
+      <img src="~/assets/img/smt-arrow.svg" @click="$emit('incrementbox')" alt />
+    </div>
     <FormattedImage
       class="lightbox-img"
       v-if="image"
@@ -14,6 +18,9 @@
       :width="1600"
       :height="1200"
     />
+    <div class="arrow right">
+      <img src="~/assets/img/smt-arrow.svg" @click="$emit('decrementbox')" alt />
+    </div>
   </div>
 </template>
 
@@ -21,12 +28,9 @@
 import FormattedImage from '~/components/FormattedImage'
 
 export default {
-  props: {
-    image: {},
-    captions: {}
-  },
+  props: ['image', 'captions', 'showLightBox'],
   components: {
-    FormattedImage
+    FormattedImage,
   }
 }
 </script>
@@ -59,6 +63,14 @@ export default {
 
   .lightbox-img img {
     max-height: 100vh;
+  }
+
+  .arrow {
+    background-color: $grey;
+    opacity: 1 !important;
+    border-radius: 50%;
+    margin: 0.5rem;
+    border: 1px solid;
   }
 }
 </style>
