@@ -6,7 +6,7 @@
         <DateFormatter :data="article" />
       </div>
       <FormattedImage
-        v-if="hasHeader(article)"
+        v-if="hasHeader(article) && !hasHeaderGallery(article)"
         :field="article.header"
         :width="1200"
         :height="800"
