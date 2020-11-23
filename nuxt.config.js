@@ -1,10 +1,10 @@
 export default {
   ssr: false,
- /*
- ** Nuxt target
- ** See https://nuxtjs.org/api/configuration-target
- */
- target: 'static',
+  /*
+  ** Nuxt target
+  ** See https://nuxtjs.org/api/configuration-target
+  */
+  target: 'static',
   telemetry: false,
   /*
    ** Headers of the page
@@ -48,7 +48,15 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['~/assets/styles/fonts.scss',
+    '~/assets/styles/base.scss',
+    '~/assets/styles/blocks/BlockProjectLarge.scss',
+    '~/assets/styles/blocks/Footer.scss',
+    '~/assets/styles/blocks/BlockHeader.scss',
+    '~/assets/styles/blocks/BlockProjectSmall.scss',
+    '~/assets/styles/blocks/Pagination.scss',
+    '~/assets/styles/blocks/BlockArticle.scss',
+    '~/assets/styles/blocks/BlockGallery.scss'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -90,10 +98,10 @@ export default {
       themeColor: '#ffffff'
     }]
   ],
-    // Doc: https://hackernoon.com/how-i-use-scss-variables-mixins-functions-globally-in-nuxt-js-projects-while-compiling-css-utilit-58bb6ff30438
-    styleResources: {
-      scss: ['assets/styles/values.scss', 'assets/styles/mixins.scss'],
-    },
+  // Doc: https://hackernoon.com/how-i-use-scss-variables-mixins-functions-globally-in-nuxt-js-projects-while-compiling-css-utilit-58bb6ff30438
+  styleResources: {
+    scss: ['assets/styles/values.scss', 'assets/styles/mixins.scss'],
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -110,9 +118,9 @@ export default {
     devtools: true,
     extend(config, ctx) {
       config.resolve.alias['vue'] = 'vue/dist/vue.common',
-      config.externals = [ {
-        whitelist: ['vue-konva', 'konva', 'vue']
-      }]
+        config.externals = [{
+          whitelist: ['vue-konva', 'konva', 'vue']
+        }]
     }
   }
 }
