@@ -8,7 +8,7 @@
     >
       <!-- Image -->
       <FormattedImage
-        v-if="HeaderImage(project)"
+        v-if="HeaderImage(project) && !GalleryImage(project)"
         class="project-img"
         :field="HeaderImage(project)"
         :width="400"
