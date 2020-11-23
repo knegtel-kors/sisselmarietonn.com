@@ -65,7 +65,8 @@ export default {
       return Boolean(get(article, ['header']))
     },
     hasHeaderGallery(article) {
-      return Boolean(get(article, ['header_gallery']))
+      console.log("get(article, ['header_gallery'])", get(article, ['header_gallery'], []).length)
+      return Boolean(get(article, ['header_gallery'], []).length)
     },
   }
 }
