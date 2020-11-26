@@ -7180,7 +7180,7 @@ pretty-time@^1.1.0:
   resolved "https://registry.yarnpkg.com/pretty-time/-/pretty-time-1.1.0.tgz#ffb7429afabb8535c346a34e41873adf3d74dd0e"
   integrity sha512-28iF6xPQrP8Oa6uxE6a1biz+lWeTOAPKggvjB8HAs6nVMKZwf5bG++632Dx614hIWgUPkgivRfG+a8uAXGTIbA==
 
-prismic-dom@^2.2.3:
+prismic-dom@^2.2.3, prismic-dom@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/prismic-dom/-/prismic-dom-2.2.4.tgz#8bcf7775127b2d30b52ee191fcfc898230517bd4"
   integrity sha512-NLOfOSp7XVpdhWBd92RSiOZ75QISsSTQPTQN1AqcILtg1/zumqpwYKvz41tl+FeWJYfKPTHanvukhWkanfTngA==
@@ -7195,6 +7195,11 @@ prismic-javascript@^3.0.2:
   integrity sha512-9RpituEVE/eZAlj+vUVy61z2IQJdL0zRYuy+IHdiUA7/37zoiCE/Z0AbI0zAWyi5UDXizgQ2TuQTLkOm62KGwA==
   dependencies:
     cross-fetch "^3.0.5"
+
+prismic-vue@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/prismic-vue/-/prismic-vue-2.0.1.tgz#c1c7af5df9fd06505b10e3a1e7d41ba06493985a"
+  integrity sha512-/bj8VUByc1NlEArl66U1OmyJJFefqatRUQ6m0MbPmfTwBfkuAw2tbCgtzhb96UCEKhRJzGkICJ3UPhyH+kMc2g==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"

@@ -7,7 +7,6 @@
       :alt="field.alt"
       class="hires"
     />
-    <!-- || (field && field.copyright) -->
     <p
       v-if="showCaption && getCopyright(field)"
       class="image-caption"
@@ -48,9 +47,6 @@ export default {
     return {
       fullImage: false,
     }
-  },
-  mounted() {
-    console.log('captions', this.captions, _.get(this, ['field', 'copyright']))
   },
   methods: {
     reduceFraction(data) {
