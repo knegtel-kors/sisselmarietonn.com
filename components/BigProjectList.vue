@@ -85,7 +85,7 @@ export default {
       if (text) {
         // render prismic slice as html
         // then strip html so we have a flat paragraph
-        return stripHtml(this.$prismic.asHtml(text.primary.text))
+        return stripHtml(this.$prismic.asHtml(text.primary.text)).result
       }
 
       // if we can't find any test return false
