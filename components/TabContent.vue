@@ -47,6 +47,7 @@
           "
           class="fullwidth_image"
           :field="slice.primary.image"
+          showCaption
           :width="800"
           :height="600"
         />

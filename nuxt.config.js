@@ -63,8 +63,11 @@ export default {
   router: {
     base: '/'
   },
-  plugins: ['~/plugins/konva'],
 
+  plugins: [
+    '~/plugins/konva',
+    '~/plugins/html-serializer'
+  ],
   prismic: {
     endpoint: 'https://sisselmarietonn.cdn.prismic.io/api/v2',
     preview: '/preview/'

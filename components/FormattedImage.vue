@@ -7,19 +7,33 @@
       :alt="field.alt"
       class="hires"
     />
-    <prismic-rich-text
-      v-if="captions || (field && field.copyright)"
+    <p
+      v-if="showCaption && getCopyright(field)"
       class="image-caption"
-      :field="captions || field.copyright"
+    >
+      {{ getCopyright(field) }}
+    </p>
+    <prismic-rich-text
+      v-if="showCaption && isArray(captions)"
+      class="image-caption"
+      :field="captions"
     />
   </div>
 </template>
 
 <script>
+import _ from 'lodash'
+
 export default {
   props: {
-    field: {},
+    field: {
+      type: Object,
+    },
     captions: {},
+    showCaption: {
+      type: Boolean,
+      default: false,
+    },
     width: {
       type: Number,
       required: false,
@@ -47,6 +61,15 @@ export default {
       }
 
       return [numOne * scaler, numTwo * scaler]
+    },
+    isArray(item) {
+      return _.isArray(item)
+    },
+    isString(item) {
+      return _.isString(item)
+    },
+    getCopyright(item) {
+      return _.get(item, ['copyright'])
     },
     formatUrl(url, width = 'auto', height = 'auto', scale = 1) {
       return `${url},fit=crop&w=${width * scale}&h=${height * scale} ${scale}x`
