@@ -134,9 +134,12 @@
         max-width: 1rem;
       }
     }
+
     @include respond-until($screen-s) {
       flex-wrap: wrap;
       justify-content: flex-end;
+      display: flex;
+
 
       .arrow {
         padding: 1rem 1rem 0.75rem;
