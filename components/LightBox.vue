@@ -6,20 +6,32 @@
       alt="Close lightbox overlay"
       @click="$emit('closebox')"
     />
+    <div class="lightbox-slides-wrapper">
+      <div class="arrow left">
+        <img
+          src="~/assets/img/smt-arrow.svg"
+          @click="$emit('incrementbox')"
+          alt
+        />
+      </div>
+      <div  @click="$emit('incrementbox')">
 
-    <div class="arrow left">
-      <img src="~/assets/img/smt-arrow.svg" @click="$emit('incrementbox')" alt />
-    </div>
-    <FormattedImage
-      class="lightbox-img"
-      v-if="image"
-      :field="image"
-      :captions="captions"
-      :width="1600"
-      :height="1200"
-    />
-    <div class="arrow right">
-      <img src="~/assets/img/smt-arrow.svg" @click="$emit('decrementbox')" alt />
+      <FormattedImage
+        class="lightbox-img"
+        v-if="image"
+        :field="image"
+        :captions="captions"
+        :width="1600"
+        :height="1200"
+      />
+      </div>
+      <div class="arrow right">
+        <img
+          src="~/assets/img/smt-arrow.svg"
+          @click="$emit('decrementbox')"
+          alt
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -31,7 +43,7 @@ export default {
   props: ['image', 'captions', 'showLightBox'],
   components: {
     FormattedImage,
-  }
+  },
 }
 </script>
 <style lang="scss">
@@ -57,20 +69,59 @@ export default {
   }
 
   .lightbox-img {
-    max-width: calc(100% - 1rem);
     height: auto;
   }
 
   .lightbox-img img {
     max-height: 100vh;
+    width: 100%;
   }
 
-  .arrow {
-    background-color: $grey;
-    opacity: 1 !important;
-    border-radius: 50%;
-    margin: 0.5rem;
-    border: 1px solid;
+  .lightbox-slides-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 48px 1fr 48px;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+
+    .arrow {
+      padding: 1rem;
+      cursor: pointer;
+      opacity: 0.4;
+      transition: opacity 0.15s;
+      background-color: $grey;
+      opacity: 1 !important;
+      border-radius: 50%;
+      border: 1px solid;
+      width: 48px;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &.left {
+        transform: rotate(180deg);
+      }
+
+      &.right {
+        align-self: right;
+      }
+
+      img {
+        min-width: 1rem;
+        max-width: 1rem;
+      }
+    }
+  }
+
+  @include respond-until($screen-s) {
+    .lightbox-slides-wrapper {
+      display: flex;
+      .arrow {
+        display: none;
+      }
+    }
   }
 }
 </style>
