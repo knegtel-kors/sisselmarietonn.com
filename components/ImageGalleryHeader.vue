@@ -6,6 +6,7 @@
       </div>
       <FormattedImage
         class="slide-img"
+        showCaption
         v-if="hasHeaderImage(slides[current])"
         :field="slides[current].image"
         :captions="slides[current].caption"

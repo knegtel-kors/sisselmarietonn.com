@@ -14,16 +14,15 @@
           alt
         />
       </div>
-      <div  @click="$emit('incrementbox')">
-
-      <FormattedImage
-        class="lightbox-img"
-        v-if="image"
-        :field="image"
-        :captions="captions"
-        :width="1600"
-        :height="1200"
-      />
+      <div @click="$emit('incrementbox')">
+        <FormattedImage
+          class="lightbox-img"
+          v-if="image"
+          :field="image"
+          :captions="captions"
+          :width="1600"
+          :height="1200"
+        />
       </div>
       <div class="arrow right">
         <img
@@ -44,6 +43,9 @@ export default {
   components: {
     FormattedImage,
   },
+  mounted() {
+    console.log('captions?', this.captions)
+  }
 }
 </script>
 <style lang="scss">

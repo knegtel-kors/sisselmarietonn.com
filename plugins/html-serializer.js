@@ -9,9 +9,11 @@ const htmlSerializer = (type, element, content, children) => {
   if (type === Elements.image) {
     let result = `
       <img src="${element.url}" alt="${element.alt || ''}" />
-      <p class="image-caption">
-        ${element.copyright || ''}
-      </p>
+      <div class="image-caption">
+        <p>
+          ${element.copyright || ''}
+        </p>
+      </div>
     `;
 
     return result;

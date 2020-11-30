@@ -7,14 +7,13 @@
       :alt="field.alt"
       class="hires"
     />
-    <p
-      v-if="showCaption && getCopyright(field)"
-      class="image-caption"
-    >
-      {{ getCopyright(field) }}
-    </p>
+    <div v-if="showCaption && getCopyright(field)" class="image-caption">
+      <p>
+        {{ getCopyright(field) }}
+      </p>
+    </div>
     <prismic-rich-text
-      v-if="showCaption && isArray(captions)"
+      v-else-if="showCaption && isArray(captions)"
       class="image-caption"
       :field="captions"
     />
