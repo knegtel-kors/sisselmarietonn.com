@@ -190,6 +190,11 @@
             border-bottom: 1px solid $black;
           }
 
+          img,
+          .image-caption {
+            margin-bottom: 1.4em;
+          }
+
           p {
             font-size: 1.25rem;
             line-height: 1.4em;
