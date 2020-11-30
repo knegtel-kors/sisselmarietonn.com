@@ -71,6 +71,7 @@
     width: 100%;
     max-width: 840px;
     padding-top: 0.75rem;
+    margin: 0 auto;
     @include flex-center;
     @include block-borders;
     @include respond-until($screen-s) {
