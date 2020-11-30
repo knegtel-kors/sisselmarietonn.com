@@ -25,7 +25,7 @@
     "nuxt-social-meta": "^0.0.5",
     "prismic-dom": "^2.2.4",
     "prismic-vue": "^2.0.1",
-    "string-strip-html": "^6.3.0",
+    "string-strip-html": "^7.0.2",
     "text-balancer": "^1.0.5",
     "vue-dragscroll": "^2.1.0",
     "vue-konva": "^2.1.6"
