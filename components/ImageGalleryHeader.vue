@@ -10,8 +10,8 @@
         v-if="hasHeaderImage(slides[current])"
         :field="slides[current].image"
         :captions="slides[current].caption"
-        :width="800"
-        :height="600"
+        :width="1600"
+        :height="1200"
         @click.native="openLightBox()"
       />
       <div class="arrow right" v-on:click="increment">

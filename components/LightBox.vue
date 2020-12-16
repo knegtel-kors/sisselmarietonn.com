@@ -76,7 +76,8 @@ export default {
 
   .lightbox-img img {
     max-height: 100vh;
-    width: 100%;
+    width: auto;
+    margin: 0 auto;
   }
 
   .lightbox-slides-wrapper {

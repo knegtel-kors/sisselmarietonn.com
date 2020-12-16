@@ -9,8 +9,8 @@
         v-if="slides[current].gallery_image"
         :field="slides[current].gallery_image"
         :captions="slides[current].image_captions"
-        :width="800"
-        :height="600"
+        :width="1600"
+        :height="1200"
         @click.native="toggleLightBox()"
       />
       <div class="arrow right" v-on:click="increment">
