@@ -34,10 +34,22 @@ import TabContent from '~/components/TabContent'
 import get from 'lodash.get'
 import head from 'lodash.head'
 
+const socialMeta = (img) => {
+  // All meta tags
+  const metaTags = [
+    { property: "og:image", content: img },
+    { name: "twitter:image", content: img },
+  ]
+
+    console.log('tags', metaTags)
+  return metaTags
+}
+
 export default {
   head() {
     return {
       title: `${this.title} by Sissel Marie Tonn`,
+      meta: socialMeta(this.metaImageUrl)
     }
   },
   components: {
@@ -50,9 +62,15 @@ export default {
     try {
       const article = await $prismic.api.getByUID('article', params.uid)
       // Returns data to be used in template
+      const headerImg = get(article, ['data','header', 'url'])
+      const firstGalleryImg = get(article, ['data', 'header_gallery', '0', 'image', 'url'])
+
+      console.log('meta', headerImg || firstGalleryImg || 'https://sisselmarietonn.com/social.jpg')
+
       return {
         article: article.data,
         title: article.data.title[0].text,
+        metaImageUrl: headerImg || firstGalleryImg || 'https://sisselmarietonn.com/social.jpg'
       }
     } catch (e) {
       // Returns error page
