@@ -76,7 +76,7 @@ export default {
 
   .lightbox-img img {
     max-height: 100vh;
-    width: auto;
+    width: 100%;
     margin: 0 auto;
   }
 
