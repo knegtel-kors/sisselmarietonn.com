@@ -7,10 +7,9 @@
       @click="$emit('closebox')"
     />
     <div class="lightbox-slides-wrapper">
-      <div class="arrow left">
+      <div class="arrow left" @click="$emit('incrementbox')">
         <img
           src="~/assets/img/smt-arrow.svg"
-          @click="$emit('incrementbox')"
           alt
         />
       </div>
@@ -24,10 +23,9 @@
           :height="1200"
         />
       </div>
-      <div class="arrow right">
+      <div class="arrow right" @click="$emit('decrementbox')">
         <img
           src="~/assets/img/smt-arrow.svg"
-          @click="$emit('decrementbox')"
           alt
         />
       </div>
