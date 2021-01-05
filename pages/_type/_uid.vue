@@ -83,7 +83,11 @@ export default {
       return Boolean(get(article, ['header']))
     },
     hasHeaderGallery(article) {
-      return Boolean(get(article, ['header_gallery'], []).length)
+      const headerSlides = get(article, ['header_gallery'], []).filter(slide => {
+        return get(slide, ['image', 'url'])
+      })
+
+      return Boolean(headerSlides.length)
     },
   }
 }

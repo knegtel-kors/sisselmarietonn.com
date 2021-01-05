@@ -84,7 +84,11 @@ export default {
       return get(project, ['data', 'header'])
     },
     GalleryImage(project) {
-      const firstSlide = head(get(project, ['data', 'header_gallery']))
+      const headerSlides = get(project, ['data', 'header_gallery'], []).filter(slide => {
+        return get(slide, ['image', 'url'])
+      })
+
+      const firstSlide = head(headerSlides)
       return get(firstSlide, ['image'])
     }
   },
