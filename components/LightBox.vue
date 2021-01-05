@@ -40,9 +40,6 @@ export default {
   props: ['image', 'captions', 'showLightBox'],
   components: {
     FormattedImage,
-  },
-  mounted() {
-    console.log('captions?', this.captions)
   }
 }
 </script>
