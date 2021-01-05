@@ -62,6 +62,9 @@ export default {
       required: true,
     },
   },
+  mounted() {
+    document.body.style.overflow = this.showLightBox ? 'hidden' : ''
+  },
   watch: {
     // whenever active changes, this function will run
     showLightBox: function () {

@@ -66,14 +66,17 @@ export default {
       // get the gallery_image url
       // force to boolean
       return Boolean(get(head(this.slides), ['gallery_image', 'url']))
-    }
+    },
+  },
+  mounted() {
+    document.body.style.overflow = this.showLightBox ? 'hidden' : ''
   },
   watch: {
-  // whenever active changes, this function will run
-  showLightBox: function () {
-    document.body.style.overflow = this.showLightBox ? 'hidden' : ''
-  }
-},
+    // whenever active changes, this function will run
+    showLightBox: function () {
+      document.body.style.overflow = this.showLightBox ? 'hidden' : ''
+    },
+  },
   methods: {
     toggleLightBox() {
       this.showLightBox = !this.showLightBox
