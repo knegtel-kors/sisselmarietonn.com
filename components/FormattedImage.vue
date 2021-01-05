@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="formattedimage-wrapper">
     <img
       loading="lazy"
       v-if="field && field.url"

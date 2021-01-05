@@ -13,7 +13,6 @@
           alt
         />
       </div>
-      <div @click="$emit('incrementbox')">
         <FormattedImage
           class="lightbox-img"
           v-if="image"
@@ -21,8 +20,8 @@
           :captions="captions"
           :width="1600"
           :height="1200"
+          @click.native="$emit('incrementbox')"
         />
-      </div>
       <div class="arrow right" @click="$emit('decrementbox')">
         <img
           src="~/assets/img/smt-arrow.svg"
@@ -70,8 +69,9 @@ export default {
   }
 
   .lightbox-img img {
+    width: auto;
+    max-width: 100%;
     max-height: 100vh;
-    width: 100%;
     margin: 0 auto;
   }
 
