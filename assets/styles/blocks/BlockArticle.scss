@@ -156,6 +156,17 @@
             max-width: 700px;
             margin: 0 auto;
             display: block;
+            width: 100%;
+
+            &[src*="vimeo"] {
+              @include respond-until($screen-s) {
+                height: 220px;
+              }
+
+              @include respond-until($screen-xs) {
+                height: 200px;
+              }
+            }
           }
         }
         // Dropcap
