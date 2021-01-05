@@ -30,7 +30,9 @@
       v-if="showLightBox"
       :image="slides[current].gallery_image"
       :captions="slides[current].image_captions"
-      @click.native="toggleLightBox()"
+      v-on:closebox="showLightBox = false"
+      v-on:incrementbox="increment"
+      v-on:decrementbox="decrement"
     />
   </div>
 </template>
