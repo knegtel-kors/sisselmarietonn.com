@@ -21,7 +21,7 @@
     "lodash.find": "^4.6.0",
     "lodash.get": "^4.4.2",
     "lodash.head": "^4.0.1",
-    "nuxt": "^2.14.7",
+    "nuxt": "^2.15.8",
     "nuxt-social-meta": "^0.0.5",
     "prismic-dom": "^2.2.4",
     "prismic-vue": "^2.0.1",
