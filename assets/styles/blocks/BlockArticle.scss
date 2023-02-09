@@ -158,6 +158,10 @@
             display: block;
             width: 100%;
 
+            &[src*='https://player.vimeo.com/video/'] {
+              right: 0;
+            }
+
             &[src*="vimeo"] {
               @include respond-until($screen-s) {
                 height: 220px;
