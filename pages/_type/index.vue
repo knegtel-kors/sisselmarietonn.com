@@ -41,7 +41,8 @@ export default {
 
       const overview = await $prismic.api.query(
         $prismic.predicates.at('my.article.type', type),
-        { orderings: '[my.article.date desc]', pageSize: 12, page: currentPage }
+        { orderings: '[my.article.start_date desc]', pageSize: 12, page: currentPage }
+        // { orderings: '[my.article.date desc]', pageSize: 12, page: currentPage }
       )
 
       if (currentPage > overview.total_pages) {
