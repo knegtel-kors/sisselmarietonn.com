@@ -28,7 +28,7 @@ export default {
   },
   head() {
     return {
-      title: `Sissel Marie Tonn`,
+      title: `Studio SENTINEL`,
     }
   },
   async asyncData({ $prismic, error }) {
