@@ -2,7 +2,7 @@
   <header v-bind:class="{ open: menuToggle }">
     <div class="headerWrapper">
       <nuxt-link to="/" ref="logo">
-        <h2>Sissel Marie Tonn</h2>
+        <h2>Studio SENTINEL</h2>
       </nuxt-link>
       <client-only>
         <!-- this component will only be rendered on client-side -->
