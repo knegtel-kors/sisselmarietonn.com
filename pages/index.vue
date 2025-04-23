@@ -28,7 +28,7 @@ export default {
   },
   head() {
     return {
-      title: `Studio SENTINEL`,
+      title: `Studio Sentinel`,
     }
   },
   async asyncData({ $prismic, error }) {
