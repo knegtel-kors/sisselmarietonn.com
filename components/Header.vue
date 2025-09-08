@@ -18,7 +18,7 @@
         >Projects</nuxt-link
       >
 
-      >
+
       <nuxt-link
         class="nav-link"
         v-on:click.native="closeMenu()"
