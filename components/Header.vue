@@ -17,11 +17,7 @@
       <nuxt-link class="nav-link" v-on:click.native="closeMenu()" to="/project"
         >Projects</nuxt-link
       >
-//      <nuxt-link
-        class="nav-link"
-        v-on:click.native="closeMenu()"
-        to="/illustration"
-        >Illustration</nuxt-link
+
       >
       <nuxt-link
         class="nav-link"
